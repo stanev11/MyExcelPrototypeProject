@@ -127,7 +127,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AutoFit.cpp" />
+    <ClCompile Include="ClearConsoleAfterCommand.cpp" />
+    <ClCompile Include="FactoryProperty.cpp" />
+    <ClCompile Include="InitialAlignment.cpp" />
+    <ClCompile Include="InitialTableCols.cpp" />
+    <ClCompile Include="InitialTableRows.cpp" />
+    <ClCompile Include="MaxTableCols.cpp" />
+    <ClCompile Include="MaxTableRows.cpp" />
     <ClCompile Include="MyExcelPrototypeProject.cpp" />
+    <ClCompile Include="MyString.cpp" />
+    <ClCompile Include="Property.cpp" />
+    <ClCompile Include="VisibleCellSymbols.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AlignmentType.h" />
+    <ClInclude Include="AutoFit.h" />
+    <ClInclude Include="ClearConsoleAfterCommand.h" />
+    <ClInclude Include="FactoryProperty.h" />
+    <ClInclude Include="InitialAlignment.h" />
+    <ClInclude Include="InitialTableCols.h" />
+    <ClInclude Include="InitialTableRows.h" />
+    <ClInclude Include="MaxTableCols.h" />
+    <ClInclude Include="MaxTableRows.h" />
+    <ClInclude Include="MyString.h" />
+    <ClInclude Include="Property.h" />
+    <ClInclude Include="PropertyType.h" />
+    <ClInclude Include="VisibleCellSymbols.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
