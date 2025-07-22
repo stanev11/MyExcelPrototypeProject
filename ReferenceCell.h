@@ -1,0 +1,15 @@
+#pragma once
+#include "Cell.h"
+
+class ReferenceCell : public Cell
+{
+private:
+	Cell* to;
+public:
+	ReferenceCell();
+	ReferenceCell(Cell* to);
+
+	Cell* clone() const override;
+	void release();
+};
+
