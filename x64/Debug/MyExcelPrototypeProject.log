@@ -1,21 +1,2 @@
-﻿  AutoFit.cpp
-  ClearConsoleAfterCommand.cpp
-  FactoryProperty.cpp
-  InitialAlignment.cpp
-  InitialTableCols.cpp
-  InitialTableRows.cpp
-  MaxTableCols.cpp
-  MaxTableRows.cpp
-  MyExcelPrototypeProject.cpp
-  MyString.cpp
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MyString.cpp(24,52): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MyString.cpp(64,52): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MyString.cpp(113,51): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MyString.cpp(158,43): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-  Property.cpp
-  VisibleCellSymbols.cpp
-  Generating Code...
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\FactoryProperty.cpp(57,1): warning C4715: 'FactoryProperty::createProperty': not all control paths return a value
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\FactoryProperty.cpp(95,1): warning C4715: 'FactoryProperty::createProperty': not all control paths return a value
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\FactoryProperty.cpp(82,1): warning C4715: 'FactoryProperty::createProperty': not all control paths return a value
+﻿  MyExcelPrototypeProject.cpp
   MyExcelPrototypeProject.vcxproj -> C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\x64\Debug\MyExcelPrototypeProject.exe

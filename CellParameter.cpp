@@ -9,3 +9,9 @@ IParameter* CellParameter::clone() const
 {
     return new CellParameter(*this);
 }
+
+MyVector<double> CellParameter::getDoubleValues() const
+{
+    //TODO
+    return MyVector<double>();
+}

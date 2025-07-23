@@ -5,6 +5,7 @@
 
 #include "Operation.h" //
 
+template <typename T>
 class FormulaCell : public Cell
 {
 private:

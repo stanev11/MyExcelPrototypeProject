@@ -1,4 +1,6 @@
 #pragma once
+#include "MyVector.hpp"
+
 class IParameter
 {
 public:

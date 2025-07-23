@@ -1,23 +1,13 @@
 #pragma once
 #include "IParameter.h"
+#include "Value.h"
 
-template <typename T>
-class ValueParameter
+class ValueParameter : public IParameter
 {
 private:
-	T value;
+	Value value;
+
 public:
-	ValueParameter(const T& value);
+	ValueParameter(const Value& value);
 	IParameter* clone() const override;
 };
-
-template<typename T>
-inline ValueParameter<T>::ValueParameter(const T& value) : value(value)
-{
-}
-
-template<typename T>
-inline IParameter* ValueParameter<T>::clone() const
-{
-	return new ValueParameter<T>(*this);
-}

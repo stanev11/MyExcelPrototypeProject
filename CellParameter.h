@@ -10,5 +10,7 @@ private:
 public:
 	CellParameter(Cell* cell);
 	IParameter* clone() const override;
+
+	MyVector<double> getDoubleValues() const override;
 };
 

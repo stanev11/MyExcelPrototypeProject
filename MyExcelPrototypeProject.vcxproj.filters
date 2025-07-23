@@ -24,9 +24,6 @@
     <ClCompile Include="Property.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InitialTableRows.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="InitialTableCols.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -49,6 +46,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FactoryProperty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Table.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InitialTableRows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -90,6 +93,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FactoryProperty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleValueCell.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
