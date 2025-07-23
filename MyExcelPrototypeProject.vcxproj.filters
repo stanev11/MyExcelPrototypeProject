@@ -54,6 +54,45 @@
     <ClCompile Include="InitialTableRows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CellParameter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FormulaCell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IParameter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Operation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RangeParameter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ReferenceCell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SumOperation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AverageOperation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Value.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ValueParameter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleValueCell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MinOperation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyString.h">
@@ -98,10 +137,55 @@
     <ClInclude Include="Table.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cell.hpp">
+    <ClInclude Include="SingleValueCell.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SingleValueCell.hpp">
+    <ClInclude Include="Cell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CellParameter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FormulaCell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FormulaName.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IParameter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyVector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Operation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RangeParameter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ReferenceCell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SumOperation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UniquePtr.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ValueParameter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AverageOperation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Value.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeterogeneousContainer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MinOperation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

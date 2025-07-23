@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AutoFit.cpp" />
+    <ClCompile Include="AverageOperation.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellParameter.cpp" />
     <ClCompile Include="ClearConsoleAfterCommand.cpp" />
@@ -139,31 +140,38 @@
     <ClCompile Include="IParameter.cpp" />
     <ClCompile Include="MaxTableCols.cpp" />
     <ClCompile Include="MaxTableRows.cpp" />
+    <ClCompile Include="MinOperation.cpp" />
     <ClCompile Include="MyExcelPrototypeProject.cpp" />
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="Operation.cpp" />
     <ClCompile Include="Property.cpp" />
     <ClCompile Include="RangeParameter.cpp" />
     <ClCompile Include="ReferenceCell.cpp" />
+    <ClCompile Include="SingleValueCell.cpp" />
     <ClCompile Include="SumOperation.cpp" />
     <ClCompile Include="Table.cpp" />
+    <ClCompile Include="Value.cpp" />
+    <ClCompile Include="ValueParameter.cpp" />
     <ClCompile Include="VisibleCellSymbols.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlignmentType.h" />
     <ClInclude Include="AutoFit.h" />
+    <ClInclude Include="AverageOperation.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellParameter.h" />
     <ClInclude Include="ClearConsoleAfterCommand.h" />
     <ClInclude Include="FactoryProperty.h" />
     <ClInclude Include="FormulaCell.h" />
     <ClInclude Include="FormulaName.h" />
+    <ClInclude Include="HeterogeneousContainer.hpp" />
     <ClInclude Include="InitialAlignment.h" />
     <ClInclude Include="InitialTableCols.h" />
     <ClInclude Include="InitialTableRows.h" />
     <ClInclude Include="IParameter.h" />
     <ClInclude Include="MaxTableCols.h" />
     <ClInclude Include="MaxTableRows.h" />
+    <ClInclude Include="MinOperation.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyVector.hpp" />
     <ClInclude Include="Operation.h" />
@@ -171,11 +179,12 @@
     <ClInclude Include="PropertyType.h" />
     <ClInclude Include="RangeParameter.h" />
     <ClInclude Include="ReferenceCell.h" />
-    <ClInclude Include="SingleValueCell.hpp" />
+    <ClInclude Include="SingleValueCell.h" />
     <ClInclude Include="SumOperation.h" />
     <ClInclude Include="Table.h" />
     <ClInclude Include="UniquePtr.hpp" />
-    <ClInclude Include="ValueParameter.hpp" />
+    <ClInclude Include="Value.h" />
+    <ClInclude Include="ValueParameter.h" />
     <ClInclude Include="VisibleCellSymbols.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

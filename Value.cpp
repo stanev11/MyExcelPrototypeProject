@@ -61,3 +61,8 @@ void Value::releaseValue()
     type = ValueType::EMPTY;
 }
 
+void Value::setErrorState()
+{
+    type = ValueType::ERROR;
+}
+

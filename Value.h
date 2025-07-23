@@ -4,6 +4,7 @@
 enum class ValueType
 {
 	EMPTY,
+	ERROR,
 	INT,
 	DOUBLE,
 	BOOL,
@@ -38,4 +39,5 @@ public:
 	const MyString& getStringValue() const;
 
 	void releaseValue();
+	void setErrorState();
 };

@@ -1,2 +1,19 @@
-﻿  MyExcelPrototypeProject.cpp
-  MyExcelPrototypeProject.vcxproj -> C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\x64\Debug\MyExcelPrototypeProject.exe
+﻿  AverageOperation.cpp
+  FormulaCell.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'FormulaCell.cpp')
+  
+  MinOperation.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MinOperation.cpp(23,26): error C2059: syntax error: ';'
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MinOperation.cpp(23,31): error C2059: syntax error: ')'
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MinOperation.cpp(23,29): error C2064: term does not evaluate to a function taking 1 arguments
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MinOperation.cpp(27,2): error C2143: syntax error: missing ';' before '}'
+  Operation.cpp
+  RangeParameter.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'RangeParameter.cpp')
+  
+  SumOperation.cpp
+  ValueParameter.cpp
+  Generating Code...
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\RangeParameter.cpp(31,1): error C4716: 'RangeParameter::getValues': must return a value
