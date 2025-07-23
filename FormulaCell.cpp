@@ -8,3 +8,13 @@ Cell* FormulaCell::clone() const
 {
 	return new FormulaCell(*this);
 }
+
+const Value& FormulaCell::getValue() const
+{
+	if (!evaluated)
+	{
+		cachedResult = operation->execute();
+		evaluated = true;
+	}
+	return cachedResult;
+}
