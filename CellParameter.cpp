@@ -1,4 +1,5 @@
 #include "CellParameter.h"
+#include "Cell.h"
 
 CellParameter::CellParameter(Cell* cell) : cell(cell)
 {
@@ -10,8 +11,11 @@ IParameter* CellParameter::clone() const
     return new CellParameter(*this);
 }
 
-MyVector<double> CellParameter::getDoubleValues() const
+MyVector<Value> CellParameter::getValues() const
 {
-    //TODO
-    return MyVector<double>();
+    MyVector<Value> vec;
+    vec.push_back(cell->getValue());
+
+    return vec;
 }
+

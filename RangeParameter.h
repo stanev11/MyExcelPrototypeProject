@@ -13,5 +13,6 @@ public:
 	RangeParameter(Cell* start, Cell* end);
 
 	IParameter* clone() const override;
+	MyVector<Value> getValues() const override;
 };
 

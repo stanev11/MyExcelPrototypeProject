@@ -12,3 +12,8 @@ Cell* SingleValueCell::clone() const
 {
     return new SingleValueCell(*this);
 }
+
+const Value& SingleValueCell::getValue() const
+{
+    return value;
+}

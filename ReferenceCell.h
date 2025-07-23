@@ -11,5 +11,7 @@ public:
 
 	Cell* clone() const override;
 	void release();
+
+	const Value& getValue() const override;
 };
 

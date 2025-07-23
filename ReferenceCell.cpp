@@ -17,3 +17,8 @@ void ReferenceCell::release()
 {
     to = nullptr;
 }
+
+const Value& ReferenceCell::getValue() const
+{
+    return to->getValue();
+}

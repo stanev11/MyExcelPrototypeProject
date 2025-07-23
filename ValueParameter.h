@@ -10,4 +10,6 @@ private:
 public:
 	ValueParameter(const Value& value);
 	IParameter* clone() const override;
+
+	MyVector<Value> getValues() const override;
 };

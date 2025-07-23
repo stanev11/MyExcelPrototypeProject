@@ -12,4 +12,6 @@ public:
 	SingleValueCell(const Value& value);
 
 	Cell* clone() const override;
+
+	const Value& getValue() const override;
 };
