@@ -26,6 +26,8 @@ public:
     friend MyString operator+(const MyString& lhs, const MyString& rhs);
     friend std::istream& operator>>(std::istream& is, MyString& str);
 
+    MyString substr(size_t start, size_t end);
+
 private:
     explicit MyString(size_t stringLength);
 

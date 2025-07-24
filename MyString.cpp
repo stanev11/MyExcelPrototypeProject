@@ -19,6 +19,36 @@ static unsigned dataToAllocByStringLen(unsigned stringLength)
     return std::max(roundToPowerOfTwo(stringLength + 1), 16u);
 }
 
+MyString MyString::substr(size_t start, size_t end)
+{
+    if (end < start)
+    {
+        throw std::invalid_argument("Invalid args!");
+    }
+
+    if (end >= currentSize)
+    {
+        end = currentSize-1;
+    }
+
+    int newLen = end - start + 1;
+
+    char* res = new char[newLen+1];
+
+    res[newLen] = '\0';
+
+    for (size_t i = start; i <= end; i++)
+    {
+        res[i] = data[i];
+    }
+
+    MyString sub(res);
+
+    delete[] res;
+
+    return sub;   
+}
+
 MyString::MyString(size_t stringLength)
 {
     allocatedDataCapacity = dataToAllocByStringLen(stringLength);
