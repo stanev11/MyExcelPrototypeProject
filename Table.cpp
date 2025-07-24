@@ -26,10 +26,17 @@ int Table::getColsCount() const
     return cols;
 }
 
+const TableProperties& Table::getTableProps() const
+{
+    return properties;
+}
+
 void Table::addRow(size_t position)
 {
     //TODO
     cells.resizeAt(position, cols);
+
+    rows++;
 }
 
 void Table::addCol(size_t position)

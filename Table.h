@@ -2,6 +2,7 @@
 
 #include "HeterogeneousContainer.hpp"
 #include "Cell.h"
+#include "TableProperties.h"
 
 class Table
 {
@@ -10,6 +11,7 @@ private:
 	int cols = 0;
 
 	HeterogeneousContainer<Cell> cells;
+	TableProperties properties;
 
 public:
 	Table();
@@ -18,6 +20,7 @@ public:
 
 	int getRowsCount() const;
 	int getColsCount() const;
+	const TableProperties& getTableProps() const;
 
 	void addRow(size_t position);
 	void addCol(size_t position);
@@ -30,7 +33,6 @@ public:
 
 	const Cell& at(int row,int col) const;
 	Cell& at(int row,int col);
-
 
 };
 

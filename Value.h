@@ -40,4 +40,6 @@ public:
 
 	void releaseValue();
 	void setErrorState();
+	
+	MyString toString() const;
 };

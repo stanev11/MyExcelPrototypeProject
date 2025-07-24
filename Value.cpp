@@ -1,4 +1,5 @@
 #include "Value.h"
+#include "sstream"
 
 Value::Value() : type(ValueType::EMPTY)
 {
@@ -64,5 +65,32 @@ void Value::releaseValue()
 void Value::setErrorState()
 {
     type = ValueType::ERROR;
+}
+
+MyString Value::toString() const
+{
+    std::ostringstream s;
+    s << data.dVal;
+
+    switch (type)
+    {
+    case ValueType::EMPTY:
+        return MyString();
+
+    case ValueType::ERROR:
+        return MyString("#VALUE");
+
+    case ValueType::INT:
+        return MyString(""+data.iVal);
+
+    case ValueType::DOUBLE:  
+        return MyString(s.str().c_str());
+
+    case ValueType::BOOL:
+        return MyString(""+data.bVal);
+
+    case ValueType::STRING:
+        return data.sVal;
+    }
 }
 
