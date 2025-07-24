@@ -15,6 +15,8 @@ public:
 	void addObject(const T& obj);
 	void addObject(T* obj);
 
+	void insert(const T& obj, int index);
+
 	size_t getSize() const;
 
 	void remove(size_t index);
@@ -22,6 +24,10 @@ public:
 	const T* operator[](size_t index) const;
 	T* operator[](size_t index);
 	void swap(int i, int j);
+
+	size_t find(const T& obj) const;
+
+	void resizeAt(size_t index, size_t count);
 
 private:
 	T** objects = nullptr;
@@ -78,6 +84,38 @@ template<class T>
 void HeterogeneousContainer<T>::swap(int i, int j)
 {
 	std::swap(objects[i], objects[j]);
+}
+
+template<class T>
+inline size_t HeterogeneousContainer<T>::find(const T& obj) const
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		if (objects[i] == obj) return i;
+	}
+
+	throw std::invalid_argument("Invalid object as parameter!");
+}
+
+template<class T>
+inline void HeterogeneousContainer<T>::resizeAt(size_t index, size_t count)
+{
+	if (index > size)
+	{
+		throw std::out_of_range("Invalid index!");
+	}
+
+	if (size + count >= capacity)
+	{
+		resize((size+count) * 2);
+	}
+	
+	for (int i = size-1; i >= index ; i--)
+	{
+		objects[i+count] = objects[i];
+	}
+
+	size += count;
 }
 
 template<class T>
@@ -192,4 +230,27 @@ void HeterogeneousContainer<T>::addObject(T* ptr)
 		resize(capacity * 2);
 	}
 	objects[size++] = ptr;
+}
+
+template<class T>
+inline void HeterogeneousContainer<T>::insert(const T& obj, int index)
+{
+	if (index < 0 || index > size)
+	{
+		throw std::out_of_range("Invalid index!");
+	}
+
+	if (size + 1 >= capacity)
+	{
+		resize(2 * capacity);
+	}
+
+	for (int i = size-1; i >= index; i--)
+	{
+		objects[i+1] = objects[i];
+	}
+
+	size++;
+
+	objects[index] = obj;
 }
