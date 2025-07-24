@@ -17,3 +17,8 @@ const Value& SingleValueCell::getValue() const
 {
     return value;
 }
+
+MyString SingleValueCell::toString() const
+{
+    return value.toString();
+}

@@ -13,5 +13,6 @@ public:
 
 	Operation* clone() const override;
 	Value execute() override;
+
 };
 

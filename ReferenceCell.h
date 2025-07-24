@@ -13,5 +13,6 @@ public:
 	void release();
 
 	const Value& getValue() const override;
+	MyString toString() const override;
 };
 

@@ -22,3 +22,8 @@ const Value& ReferenceCell::getValue() const
 {
     return to->getValue();
 }
+
+MyString ReferenceCell::toString() const
+{
+    return to->toString();
+}

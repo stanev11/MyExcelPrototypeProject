@@ -20,5 +20,6 @@ public:
 	Cell* clone() const override;
 
 	const Value& getValue() const override;
+	MyString toString() const override;
 };
 
