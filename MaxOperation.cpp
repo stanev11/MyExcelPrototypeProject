@@ -1,11 +1,7 @@
 #include "MaxOperation.h"
 
-MaxOperation::MaxOperation()
-{
-}
-
-MaxOperation::MaxOperation(const HeterogeneousContainer<IParameter>& params) : params(params)
-{
+MaxOperation::MaxOperation(const RangeParameter& range) : range(range)
+{ 
 }
 
 Operation* MaxOperation::clone() const
@@ -18,20 +14,16 @@ Value MaxOperation::execute()
 	double max = 0;
 	bool hasNum = false;
 
-	for (size_t i = 0; i < params.getSize(); i++)
-	{
-		MyVector<Value> currentVals = params[i]->getValues();
-		size_t count = currentVals.getSize();
+	const MyVector<Value> values = range.getValues();
 
-		for (size_t j = 0; j < count; j++)
+	for (size_t i = 0; i < values.getSize(); i++)
+	{
+		if (values[i].getType() == ValueType::INT || values[i].getType() == ValueType::DOUBLE)
 		{
-			if (currentVals[j].getType() == ValueType::INT || currentVals[j].getType() == ValueType::DOUBLE)
+			if (max - values[i].getDoubleValue() < 0.0000000 || !hasNum)
 			{
-				if (max - currentVals[j].getDoubleValue() < 0.0000000 || !hasNum)
-				{
-					max = currentVals[j].getDoubleValue();
-					hasNum = true;
-				}
+				max = values[i].getDoubleValue();
+				hasNum = true;
 			}
 		}
 	}

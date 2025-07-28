@@ -1,10 +1,7 @@
 #include "MinOperation.h"
 
-MinOperation::MinOperation()
-{
-}
 
-MinOperation::MinOperation(const HeterogeneousContainer<IParameter>& params) : params(params)
+MinOperation::MinOperation(const RangeParameter& range) : range(range)
 {
 }
 
@@ -18,20 +15,16 @@ Value MinOperation::execute()
 	double min = 0;
 	bool hasNum = false;
 
-	for (size_t i = 0; i < params.getSize(); i++)
-	{
-		MyVector<Value> currentVals = params[i]->getValues();
-		size_t count = currentVals.getSize();
+	const MyVector<Value> values = range.getValues();
 
-		for (size_t j = 0; j < count; j++)
+	for (size_t i = 0; i < values.getSize(); i++)
+	{
+		if (values[i].getType() == ValueType::INT || values[i].getType() == ValueType::DOUBLE)
 		{
-			if (currentVals[j].getType() == ValueType::INT || currentVals[j].getType() == ValueType::DOUBLE)
+			if (min - values[i].getDoubleValue() > 0.0000000 || !hasNum)
 			{
-				if (min - currentVals[j].getDoubleValue() > 0.0000000 || !hasNum)
-				{
-					min = currentVals[j].getDoubleValue();
-					hasNum = true;
-				}
+				min = values[i].getDoubleValue();
+				hasNum = true;
 			}
 		}
 	}

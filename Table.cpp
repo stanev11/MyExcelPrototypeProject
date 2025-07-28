@@ -61,7 +61,7 @@ void Table::addCol(size_t position)
     cols++;
 }
 
-void Table::addCell(const Cell& cell,int row,int col)
+void Table::addCell(Cell& cell,int row,int col)
 {
     if (!isValidPosition)
     {
@@ -69,6 +69,9 @@ void Table::addCell(const Cell& cell,int row,int col)
     }
 
     cells.insert(cell, row * cols + col);
+
+    cell.setRow(row);
+    cell.setCol(col);
 }
 
 void Table::addCell(Cell* cell,int row,int col)
@@ -81,6 +84,9 @@ void Table::addCell(Cell* cell,int row,int col)
     if (cell != nullptr)
     {
         cells.insert(*cell, row * cols + col);
+
+        cell->setRow(row);
+        cell->setCol(col);
     }
     else
     {
@@ -138,17 +144,27 @@ void Table::insertAt(int row, int col, const CellContext& ctx)
     Cell* newCell = FactoryCell::createCell(ctx);
 
     addCell(newCell, row, col);
+
+    newCell->setRow(row);
+    newCell->setCol(col);
 }
 
 void Table::insertAt(Cell& cell, const CellContext& ctx)
 {
-    int index = cells.find(cell);
+    //int index = cells.find(cell);
+    int row = cell.getRow();
+    int col = cell.getCol();
 
     removeCell(cell);
 
     Cell* newCell = FactoryCell::createCell(ctx);
 
-    cells.insert(*newCell, index);
+    /*cells.insert(*newCell, index);*/
+
+    cell = *newCell;
+
+    cell.setRow(row);
+    cell.setCol(col);
 }
 
 void Table::deleteAt(int row, int col)
@@ -160,6 +176,6 @@ void Table::deleteAt(int row, int col)
 
     removeCell(row, col);
 
-    addCell(EmptyCell(), row, col);
+    addCell(new EmptyCell(), row, col);
 }
 

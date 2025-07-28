@@ -1,6 +1,8 @@
 #include "RangeParameter.h"
 
-RangeParameter::RangeParameter(Cell* start, Cell* end) : start(start),end(end)
+#include "Table.h"
+
+RangeParameter::RangeParameter(Cell* start, Cell* end,Table* table) : start(start),end(end),table(table)
 {
     //TODO - nullptr !
 }
@@ -24,8 +26,19 @@ MyVector<Value> RangeParameter::getValues() const
     {
         for (size_t j = startCol; j <= endCol; j++)
         {
-            //TODO - get cell from table
+            vec.push_back(table->at(i, j).getValue());
         }
     }
 
+    return vec;
+}
+
+const Cell& RangeParameter::getStart() const
+{
+    return *start;
+}
+
+const Cell& RangeParameter::getEnd() const
+{
+    return *end;
 }

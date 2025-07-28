@@ -1,13 +1,14 @@
 #pragma once
 #include "Operation.h"
+#include "RangeParameter.h"
 
 class MinOperation : public Operation
 {
 private:
-	HeterogeneousContainer<IParameter> params;
+	RangeParameter range;
 public:
-	MinOperation();
-	MinOperation(const HeterogeneousContainer<IParameter>& params);
+
+	MinOperation(const RangeParameter& range);
 
 	Operation* clone() const override;
 	Value execute() override;
