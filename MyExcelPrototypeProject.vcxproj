@@ -132,12 +132,14 @@
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellParameter.cpp" />
     <ClCompile Include="ClearConsoleAfterCommand.cpp" />
+    <ClCompile Include="EmptyCell.cpp" />
     <ClCompile Include="FactoryProperty.cpp" />
     <ClCompile Include="FormulaCell.cpp" />
     <ClCompile Include="InitialAlignment.cpp" />
     <ClCompile Include="InitialTableCols.cpp" />
     <ClCompile Include="InitialTableRows.cpp" />
     <ClCompile Include="IParameter.cpp" />
+    <ClCompile Include="MaxOperation.cpp" />
     <ClCompile Include="MaxTableCols.cpp" />
     <ClCompile Include="MaxTableRows.cpp" />
     <ClCompile Include="MinOperation.cpp" />
@@ -150,6 +152,8 @@
     <ClCompile Include="SingleValueCell.cpp" />
     <ClCompile Include="SumOperation.cpp" />
     <ClCompile Include="Table.cpp" />
+    <ClCompile Include="TableBuilder.cpp" />
+    <ClCompile Include="TableView.cpp" />
     <ClCompile Include="Value.cpp" />
     <ClCompile Include="ValueParameter.cpp" />
     <ClCompile Include="VisibleCellSymbols.cpp" />
@@ -161,6 +165,7 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellParameter.h" />
     <ClInclude Include="ClearConsoleAfterCommand.h" />
+    <ClInclude Include="EmptyCell.h" />
     <ClInclude Include="FactoryProperty.h" />
     <ClInclude Include="FormulaCell.h" />
     <ClInclude Include="FormulaName.h" />
@@ -169,6 +174,7 @@
     <ClInclude Include="InitialTableCols.h" />
     <ClInclude Include="InitialTableRows.h" />
     <ClInclude Include="IParameter.h" />
+    <ClInclude Include="MaxOperation.h" />
     <ClInclude Include="MaxTableCols.h" />
     <ClInclude Include="MaxTableRows.h" />
     <ClInclude Include="MinOperation.h" />
@@ -182,6 +188,9 @@
     <ClInclude Include="SingleValueCell.h" />
     <ClInclude Include="SumOperation.h" />
     <ClInclude Include="Table.h" />
+    <ClInclude Include="TableBuilder.h" />
+    <ClInclude Include="TableProperties.h" />
+    <ClInclude Include="TableView.h" />
     <ClInclude Include="UniquePtr.hpp" />
     <ClInclude Include="Value.h" />
     <ClInclude Include="ValueParameter.h" />

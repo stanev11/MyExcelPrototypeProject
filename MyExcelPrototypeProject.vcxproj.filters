@@ -93,6 +93,18 @@
     <ClCompile Include="MinOperation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MaxOperation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EmptyCell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TableBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TableView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyString.h">
@@ -186,6 +198,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MinOperation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MaxOperation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EmptyCell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TableBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TableView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TableProperties.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

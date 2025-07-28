@@ -1,19 +1,260 @@
 ﻿  AverageOperation.cpp
+  Cell.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'Cell.cpp')
+  
+  CellParameter.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'CellParameter.cpp')
+  
+  EmptyCell.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'EmptyCell.cpp')
+  
   FormulaCell.cpp
 C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   (compiling source file 'FormulaCell.cpp')
   
+  IParameter.cpp
+  MaxOperation.cpp
   MinOperation.cpp
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MinOperation.cpp(23,26): error C2059: syntax error: ';'
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MinOperation.cpp(23,31): error C2059: syntax error: ')'
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MinOperation.cpp(23,29): error C2064: term does not evaluate to a function taking 1 arguments
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MinOperation.cpp(27,2): error C2143: syntax error: missing ';' before '}'
   Operation.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Operation.cpp(3,12): error C2600: 'Operation::Operation': cannot define a compiler-generated special member function (must be declared in the class first)
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Operation.cpp(7,12): error C2511: 'Operation::Operation(const HeterogeneousContainer<IParameter> &)': overloaded member function not found in 'Operation'
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Operation.h(7,7):
+      see declaration of 'Operation'
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Operation.cpp(8,1): error C2550: 'Operation::{ctor}': constructor initializer lists are only allowed on constructor definitions
   RangeParameter.cpp
 C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   (compiling source file 'RangeParameter.cpp')
   
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\RangeParameter.cpp(17,27): error C2039: 'getRow': is not a member of 'Cell'
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(4,7):
+      see declaration of 'Cell'
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\RangeParameter.cpp(18,27): error C2039: 'getCol': is not a member of 'Cell'
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(4,7):
+      see declaration of 'Cell'
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\RangeParameter.cpp(20,23): error C2039: 'getRow': is not a member of 'Cell'
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(4,7):
+      see declaration of 'Cell'
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\RangeParameter.cpp(21,23): error C2039: 'getCol': is not a member of 'Cell'
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(4,7):
+      see declaration of 'Cell'
+  
+  ReferenceCell.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'ReferenceCell.cpp')
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ReferenceCell.cpp(13,16): error C2259: 'ReferenceCell': cannot instantiate abstract class
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ReferenceCell.h(4,7):
+      see declaration of 'ReferenceCell'
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ReferenceCell.cpp(13,16):
+      due to following members:
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ReferenceCell.cpp(13,16):
+      'MyString Cell::toString(void) const': is abstract
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(12,19):
+      see declaration of 'Cell::toString'
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ReferenceCell.cpp(13,29): error C2259: 'ReferenceCell': cannot instantiate abstract class
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ReferenceCell.h(4,7):
+      see declaration of 'ReferenceCell'
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ReferenceCell.cpp(13,29):
+      due to following members:
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ReferenceCell.cpp(13,29):
+      'MyString Cell::toString(void) const': is abstract
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(12,19):
+      see declaration of 'Cell::toString'
+  
+  SingleValueCell.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'SingleValueCell.cpp')
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\SingleValueCell.cpp(13,16): error C2259: 'SingleValueCell': cannot instantiate abstract class
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\SingleValueCell.h(6,7):
+      see declaration of 'SingleValueCell'
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\SingleValueCell.cpp(13,16):
+      due to following members:
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\SingleValueCell.cpp(13,16):
+      'MyString Cell::toString(void) const': is abstract
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(12,19):
+      see declaration of 'Cell::toString'
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\SingleValueCell.cpp(13,31): error C2259: 'SingleValueCell': cannot instantiate abstract class
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\SingleValueCell.h(6,7):
+      see declaration of 'SingleValueCell'
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\SingleValueCell.cpp(13,31):
+      due to following members:
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\SingleValueCell.cpp(13,31):
+      'MyString Cell::toString(void) const': is abstract
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(12,19):
+      see declaration of 'Cell::toString'
+  
   SumOperation.cpp
+  Table.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'Table.cpp')
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(42,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(67,15): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(248,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Table.cpp')
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(248,13):
+      the template instantiation context (the oldest one first) is
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.h(12,31):
+          see reference to class template instantiation 'HeterogeneousContainer<Cell>' being compiled
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(237,1):
+          while compiling class template member function 'void HeterogeneousContainer<Cell>::insert(const T &,int)'
+          with
+          [
+              T=Cell
+          ]
+              C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(42,21):
+              see the first reference to 'HeterogeneousContainer<Cell>::insert' in 'Table::addCol'
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(255,19): error C2440: '=': cannot convert from 'const T' to 'T *'
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(255,19): error C2440:         with
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(255,19): error C2440:         [
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(255,19): error C2440:             T=Cell
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(255,19): error C2440:         ]
+  (compiling source file 'Table.cpp')
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(255,19):
+      No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(57,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Table.cpp')
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(57,13):
+      the template instantiation context (the oldest one first) is
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(52,1):
+          while compiling class template member function 'void HeterogeneousContainer<Cell>::remove(size_t)'
+              C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(69,17):
+              see the first reference to 'HeterogeneousContainer<Cell>::remove' in 'Table::removeCell'
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16): error C2679: binary '==': no operator found which takes a right-hand operand of type 'const T' (or there is no acceptable conversion)
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16): error C2679:         with
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16): error C2679:         [
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16): error C2679:             T=Cell
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16): error C2679:         ]
+  (compiling source file 'Table.cpp')
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MyString.h(44,6):
+      could be 'bool operator ==(const MyString &,const MyString &)'
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+          'bool operator ==(const MyString &,const MyString &)': cannot convert argument 1 from 'T *' to 'const MyString &'
+          with
+          [
+              T=Cell
+          ]
+              C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+              Reason: cannot convert from 'T *' to 'const MyString'
+          with
+          [
+              T=Cell
+          ]
+              C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+              'MyString::MyString': no overloaded function could convert all the argument types
+                  C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MyString.h(13,5):
+                  could be 'MyString::MyString(MyString &&) noexcept'
+                      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+                      'MyString::MyString(MyString &&) noexcept': cannot convert argument 1 from 'T *' to 'MyString &&'
+          with
+          [
+              T=Cell
+          ]
+                          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+                          Reason: cannot convert from 'T *' to 'MyString'
+          with
+          [
+              T=Cell
+          ]
+                          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+                          Conversion requires a second user-defined-conversion operator or constructor
+                  C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MyString.h(10,5):
+                  or       'MyString::MyString(const MyString &)'
+                      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+                      'MyString::MyString(const MyString &)': cannot convert argument 1 from 'T *' to 'const MyString &'
+          with
+          [
+              T=Cell
+          ]
+                          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+                          Reason: cannot convert from 'T *' to 'const MyString'
+          with
+          [
+              T=Cell
+          ]
+                          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+                          Conversion requires a second user-defined-conversion operator or constructor
+                  C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\MyString.h(8,5):
+                  or       'MyString::MyString(const char *)'
+                      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+                      'MyString::MyString(const char *)': cannot convert argument 1 from 'T *' to 'const char *'
+          with
+          [
+              T=Cell
+          ]
+                          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+                          Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+                  C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+                  while trying to match the argument list '(T *)'
+          with
+          [
+              T=Cell
+          ]
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+      or       'built-in C++ operator==(T *, T *)'
+          with
+          [
+              T=Cell
+          ]
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+          '==': cannot convert argument 2 from 'const T' to 'T *'
+          with
+          [
+              T=Cell
+          ]
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+      while trying to match the argument list '(T *, const T)'
+          with
+          [
+              T=Cell
+          ]
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(94,16):
+      the template instantiation context (the oldest one first) is
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(91,1):
+          while compiling class template member function 'size_t HeterogeneousContainer<Cell>::find(const T &) const'
+          with
+          [
+              T=Cell
+          ]
+              C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(67,15):
+              see the first reference to 'HeterogeneousContainer<Cell>::find' in 'Table::removeCell'
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(113,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Table.cpp')
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(113,13):
+      the template instantiation context (the oldest one first) is
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(102,1):
+          while compiling class template member function 'void HeterogeneousContainer<Cell>::resizeAt(size_t,size_t)'
+              C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(32,19):
+              see the first reference to 'HeterogeneousContainer<Cell>::resizeAt' in 'Table::addRow'
+  
+  TableBuilder.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'TableBuilder.cpp')
+  
+  TableView.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'TableView.cpp')
+  
+  Value.cpp
   ValueParameter.cpp
   Generating Code...
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\RangeParameter.cpp(31,1): error C4716: 'RangeParameter::getValues': must return a value
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Value.cpp(58,1): warning C4715: 'Value::getStringValue': not all control paths return a value
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Value.cpp(48,1): warning C4715: 'Value::getDoubleValue': not all control paths return a value
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Value.cpp(53,1): warning C4715: 'Value::getBoolValue': not all control paths return a value
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Value.cpp(43,1): warning C4715: 'Value::getIntValue': not all control paths return a value
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Value.cpp(96,1): warning C4715: 'Value::toString': not all control paths return a value
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\EmptyCell.cpp(10,1): warning C4172: returning address of local variable or temporary 

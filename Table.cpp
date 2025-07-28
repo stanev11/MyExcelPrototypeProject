@@ -1,6 +1,7 @@
 #include "Table.h"
 
-#include "EmptyCell.h"
+#include "CellContext.h"
+#include "FactoryCell.h"
 
 Table::Table()
 {
@@ -31,6 +32,16 @@ const TableProperties& Table::getTableProps() const
     return properties;
 }
 
+bool Table::isValidPosition(int row, int col) const
+{
+    return row <= rows && col <= cols;
+}
+
+bool Table::isEmpty(int row, int col) const
+{
+    return at(row,col).getValue().getType() == ValueType::EMPTY;
+}
+
 void Table::addRow(size_t position)
 {
     //TODO
@@ -52,11 +63,21 @@ void Table::addCol(size_t position)
 
 void Table::addCell(const Cell& cell,int row,int col)
 {
+    if (!isValidPosition)
+    {
+        //throw - TODO
+    }
+
     cells.insert(cell, row * cols + col);
 }
 
 void Table::addCell(Cell* cell,int row,int col)
 {
+    if (!isValidPosition)
+    {
+        //throw - TODO
+    }
+
     if (cell != nullptr)
     {
         cells.insert(*cell, row * cols + col);
@@ -76,15 +97,69 @@ void Table::removeCell(const Cell& cell)
 
 void Table::removeCell(int row, int col)
 {
+    if (!isValidPosition)
+    {
+        //throw - TODO
+    }
+
     cells.remove(row * rows + col);
 }
 
 const Cell& Table::at(int row,int col) const
 {
+
+    if (!isValidPosition)
+    {
+        //throw - TODO
+    }
+
     return *cells[row * cols + col];
 }
 
 Cell& Table::at(int row,int col)
 {
+    if (!isValidPosition)
+    {
+        //throw - TODO
+    }
+
     return *cells[row * cols + col];
 }
+
+void Table::insertAt(int row, int col, const CellContext& ctx)
+{
+    if (!isValidPosition)
+    {
+        //throw - TODO
+    }
+
+    removeCell(row, col);
+
+    Cell* newCell = FactoryCell::createCell(ctx);
+
+    addCell(newCell, row, col);
+}
+
+void Table::insertAt(Cell& cell, const CellContext& ctx)
+{
+    int index = cells.find(cell);
+
+    removeCell(cell);
+
+    Cell* newCell = FactoryCell::createCell(ctx);
+
+    cells.insert(*newCell, index);
+}
+
+void Table::deleteAt(int row, int col)
+{
+    if (!isValidPosition)
+    {
+        //throw - TODO
+    }
+
+    removeCell(row, col);
+
+    addCell(EmptyCell(), row, col);
+}
+

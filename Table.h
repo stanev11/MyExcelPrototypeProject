@@ -22,6 +22,9 @@ public:
 	int getColsCount() const;
 	const TableProperties& getTableProps() const;
 
+	bool isValidPosition(int row, int col) const;
+	bool isEmpty(int row, int col) const;
+
 	void addRow(size_t position);
 	void addCol(size_t position);
 
@@ -33,6 +36,11 @@ public:
 
 	const Cell& at(int row,int col) const;
 	Cell& at(int row,int col);
+
+	void insertAt(int row, int col, const CellContext& ctx);
+	void insertAt(Cell& cell, const CellContext& ctx);
+
+	void deleteAt(int row, int col);
 
 };
 
