@@ -1,14 +1,14 @@
 #pragma once
-#include "RangeParameter.h"
 #include "Operation.h"
+#include "RangeParameter.h"
 
-class MaxOperation : public Operation
+class ConcatOperation : public Operation
 {
 private:
 	RangeParameter range;
+	char delimiter;
 public:
-
-	MaxOperation(const RangeParameter& range);
+	ConcatOperation(const RangeParameter& range, char delim);
 
 	Operation* clone() const override;
 	Value execute() override;
