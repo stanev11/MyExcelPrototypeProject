@@ -18,3 +18,8 @@ const Value& FormulaCell::getValue() const
 	}
 	return cachedResult;
 }
+
+MyString FormulaCell::toString() const
+{
+	return getValue().toString();
+}

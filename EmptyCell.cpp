@@ -9,3 +9,9 @@ const Value& EmptyCell::getValue() const
 {
     return Value();
 }
+
+MyString EmptyCell::toString() const
+{
+    return "";
+}
+
