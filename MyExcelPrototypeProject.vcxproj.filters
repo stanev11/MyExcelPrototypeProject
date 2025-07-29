@@ -105,6 +105,18 @@
     <ClCompile Include="TableView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FactoryCell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LenOperation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConcatOperation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SubstrOperation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyString.h">
@@ -213,6 +225,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TableProperties.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CellContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryCell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LenOperation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConcatOperation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SubstrOperation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
