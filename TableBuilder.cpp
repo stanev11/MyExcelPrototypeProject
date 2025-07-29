@@ -24,7 +24,7 @@ TableBuilder& TableBuilder::addCols(size_t count)
     return *this;
 }
 
-TableBuilder& TableBuilder::setCell(int row, int col, const Cell& cell)
+TableBuilder& TableBuilder::setCell(int row, int col, Cell& cell)
 {
     table.addCell(cell, row, col);
 

@@ -4,7 +4,6 @@ class Table;
 class Cell;
 
 #include "IParameter.h"
-#include "HeterogeneousContainer.hpp"
 
 class RangeParameter : public IParameter
 {

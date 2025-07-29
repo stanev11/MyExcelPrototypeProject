@@ -1,5 +1,6 @@
 #pragma once
 #include "Operation.h"
+#include "HeterogeneousContainer.hpp"
 
 class SumOperation : public Operation
 {

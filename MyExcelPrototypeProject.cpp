@@ -3,10 +3,23 @@
 
 #include <iostream>
 #include "FactoryProperty.h"
+#include "FactoryCell.h"
+
+#include "TableBuilder.h"
+#include "TableView.h"
 
 int main()
 {
-	
+	TableBuilder builder;
+
+	/*Table table = builder.addRows(5)
+						 .addCols(5)
+						 .build();*/
+	Table table(5, 5);
+	table.addCell(new EmptyCell(), 0, 0);
+
+	TableView view(table);
+	view.render();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

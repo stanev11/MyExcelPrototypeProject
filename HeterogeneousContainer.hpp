@@ -91,7 +91,7 @@ inline size_t HeterogeneousContainer<T>::find(const T& obj) const
 {
 	for (size_t i = 0; i < size; i++)
 	{
-		if (objects[i] == obj) return i;
+		if (*objects[i] == obj) return i;
 	}
 
 	throw std::invalid_argument("Invalid object as parameter!");
@@ -252,5 +252,5 @@ inline void HeterogeneousContainer<T>::insert(const T& obj, int index)
 
 	size++;
 
-	objects[index] = obj;
+	objects[index] = obj.clone();
 }

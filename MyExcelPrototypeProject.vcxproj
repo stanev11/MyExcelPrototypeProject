@@ -133,6 +133,7 @@
     <ClCompile Include="CellParameter.cpp" />
     <ClCompile Include="ClearConsoleAfterCommand.cpp" />
     <ClCompile Include="ConcatOperation.cpp" />
+    <ClCompile Include="CountOperation.cpp" />
     <ClCompile Include="EmptyCell.cpp" />
     <ClCompile Include="FactoryCell.cpp" />
     <ClCompile Include="FactoryProperty.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="CellParameter.h" />
     <ClInclude Include="ClearConsoleAfterCommand.h" />
     <ClInclude Include="ConcatOperation.h" />
+    <ClInclude Include="CountOperation.h" />
     <ClInclude Include="EmptyCell.h" />
     <ClInclude Include="FactoryCell.h" />
     <ClInclude Include="FactoryProperty.h" />

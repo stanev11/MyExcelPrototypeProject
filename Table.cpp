@@ -3,7 +3,7 @@
 #include "CellContext.h"
 #include "FactoryCell.h"
 
-Table::Table()
+Table::Table() : Table(INITIAL_ROWS,INITIAL_COLS)
 {
 }
 
@@ -63,7 +63,7 @@ void Table::addCol(size_t position)
 
 void Table::addCell(Cell& cell,int row,int col)
 {
-    if (!isValidPosition)
+    if (!isValidPosition(row,col))
     {
         //throw - TODO
     }
@@ -76,7 +76,7 @@ void Table::addCell(Cell& cell,int row,int col)
 
 void Table::addCell(Cell* cell,int row,int col)
 {
-    if (!isValidPosition)
+    if (!isValidPosition(row,col))
     {
         //throw - TODO
     }
@@ -103,7 +103,7 @@ void Table::removeCell(const Cell& cell)
 
 void Table::removeCell(int row, int col)
 {
-    if (!isValidPosition)
+    if (!isValidPosition(row, col))
     {
         //throw - TODO
     }
@@ -114,7 +114,7 @@ void Table::removeCell(int row, int col)
 const Cell& Table::at(int row,int col) const
 {
 
-    if (!isValidPosition)
+    if (!isValidPosition(row,col))
     {
         //throw - TODO
     }
@@ -124,7 +124,7 @@ const Cell& Table::at(int row,int col) const
 
 Cell& Table::at(int row,int col)
 {
-    if (!isValidPosition)
+    if (!isValidPosition(row,col))
     {
         //throw - TODO
     }
@@ -134,7 +134,7 @@ Cell& Table::at(int row,int col)
 
 void Table::insertAt(int row, int col, const CellContext& ctx)
 {
-    if (!isValidPosition)
+    if (!isValidPosition(row,col))
     {
         //throw - TODO
     }
@@ -169,7 +169,7 @@ void Table::insertAt(Cell& cell, const CellContext& ctx)
 
 void Table::deleteAt(int row, int col)
 {
-    if (!isValidPosition)
+    if (!isValidPosition(row,col))
     {
         //throw - TODO
     }

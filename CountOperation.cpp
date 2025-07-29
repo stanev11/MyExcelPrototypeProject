@@ -22,4 +22,6 @@ Value CountOperation::execute()
 			counter++;
 		}
 	}
+
+	return counter;
 }

@@ -3,10 +3,14 @@
 #include "HeterogeneousContainer.hpp"
 #include "Cell.h"
 #include "TableProperties.h"
+#include "CellContext.h"
 
 class Table
 {
 private:
+	const int INITIAL_ROWS = 10;
+	const int INITIAL_COLS = 10;
+
 	int rows = 0;
 	int cols = 0;
 

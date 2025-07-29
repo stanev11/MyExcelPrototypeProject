@@ -1,5 +1,5 @@
 #pragma once
-#include "Value.h";
+#include "Value.h"
 
 class Cell
 {
@@ -20,4 +20,6 @@ public:
 	void setRow(int row);
 	void setCol(int col);
 };
+
+bool operator==(const Cell& lhs, const Cell& rhs);
 
