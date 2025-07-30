@@ -8,8 +8,17 @@ private:
 public:
 	TableBuilder();
 
-	TableBuilder& addRows(size_t count);
-	TableBuilder& addCols(size_t count);
+	TableBuilder& setInitialTableRows(size_t count);
+	TableBuilder& setInitialTableCols(size_t count);
+
+	TableBuilder& setMaxTableRows(size_t count);
+	TableBuilder& setMaxTableCols(size_t count);
+
+	TableBuilder& setAutoFit(bool val);
+	TableBuilder& setVisibleCellSymbols(size_t val);
+	TableBuilder& setInitialAlignment(AlignmentType alignment);
+	TableBuilder& setClearConsole(bool val);
+
 	TableBuilder& setCell(int row, int col, Cell& cell);
 
 	Table build();

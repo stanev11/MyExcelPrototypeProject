@@ -15,8 +15,15 @@ int main()
 	/*Table table = builder.addRows(5)
 						 .addCols(5)
 						 .build();*/
-	Table table(5, 5);
-	table.addCell(new EmptyCell(), 0, 0);
+	Table table = builder.setInitialTableRows(5)
+		.setInitialTableCols(5)
+		.setInitialAlignment(AlignmentType::left)
+		.setAutoFit(false)
+		.setClearConsole(true)
+		.setVisibleCellSymbols(3)
+		.build();
+
+	table.addCell(new SingleValueCell(MyString("okayles")), 3, 1);
 
 	TableView view(table);
 	view.render();

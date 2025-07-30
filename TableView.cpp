@@ -17,7 +17,7 @@ MyString TableView::formatCellContent(const Cell& cell, int width, AlignmentType
 
 	if (props.visibleCellSymbols > 0 && content.length() > props.visibleCellSymbols)
 	{
-		content = content.substr(0, content.length())+"...";
+		content = content.substr(0, props.visibleCellSymbols - 1);
 	}
 
 	int padding = width - content.length();

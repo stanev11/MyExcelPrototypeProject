@@ -8,9 +8,6 @@
 class Table
 {
 private:
-	const int INITIAL_ROWS = 10;
-	const int INITIAL_COLS = 10;
-
 	int rows = 0;
 	int cols = 0;
 
@@ -18,13 +15,13 @@ private:
 	TableProperties properties;
 
 public:
-	Table();
-	Table(int rows, int cols);
-	Table(const HeterogeneousContainer<Cell>& cells);
+	void setInitialRows(size_t count);
+	void setInitialCols(size_t count);
 
 	int getRowsCount() const;
 	int getColsCount() const;
 	const TableProperties& getTableProps() const;
+	TableProperties& getTableProps();
 
 	bool isValidPosition(int row, int col) const;
 	bool isEmpty(int row, int col) const;

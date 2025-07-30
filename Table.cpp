@@ -3,18 +3,36 @@
 #include "CellContext.h"
 #include "FactoryCell.h"
 
-Table::Table() : Table(INITIAL_ROWS,INITIAL_COLS)
+//Table::Table() : Table(INITIAL_ROWS,INITIAL_COLS)
+//{
+//}
+//
+//Table::Table(int rows, int cols)
+//{
+//    if (rows > 0) this->rows = rows;
+//    if (cols > 0) this->cols = cols;
+//
+//    for (size_t i = 0; i < rows; i++)
+//    {
+//        for (size_t j= 0; j < cols; j++)
+//        {
+//            cells.insert(EmptyCell(), i * rows + j);
+//        }
+//    }
+//}
+//
+//Table::Table(const HeterogeneousContainer<Cell>& cells) : cells(cells)
+//{
+//}
+
+void Table::setInitialRows(size_t count)
 {
+    this->rows = count;
 }
 
-Table::Table(int rows, int cols)
+void Table::setInitialCols(size_t count)
 {
-    if (rows > 0) this->rows = rows;
-    if (cols > 0) this->cols = cols;
-}
-
-Table::Table(const HeterogeneousContainer<Cell>& cells) : cells(cells)
-{
+    this->cols = count;
 }
 
 int Table::getRowsCount() const
@@ -28,6 +46,11 @@ int Table::getColsCount() const
 }
 
 const TableProperties& Table::getTableProps() const
+{
+    return properties;
+}
+
+TableProperties& Table::getTableProps()
 {
     return properties;
 }
@@ -68,10 +91,10 @@ void Table::addCell(Cell& cell,int row,int col)
         //throw - TODO
     }
 
-    cells.insert(cell, row * cols + col);
-
     cell.setRow(row);
     cell.setCol(col);
+
+    cells.insert(cell, row * cols + col);
 }
 
 void Table::addCell(Cell* cell,int row,int col)
@@ -83,10 +106,11 @@ void Table::addCell(Cell* cell,int row,int col)
 
     if (cell != nullptr)
     {
-        cells.insert(*cell, row * cols + col);
 
         cell->setRow(row);
         cell->setCol(col);
+
+        cells.insert(*cell, row * cols + col);
     }
     else
     {

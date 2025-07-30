@@ -10,19 +10,20 @@ Value::Value(int value) : type(ValueType::INT)
     data.iVal = value;
 }
 
+Value::Value(const MyString& value) : type(ValueType::STRING)
+{
+    data.sVal = value;
+}
+
 Value::Value(bool value) : type(ValueType::BOOL)
 {
     data.bVal = value;
 }
 
+
 Value::Value(double value) : type(ValueType::DOUBLE)
 {
     data.dVal = value;
-}
-
-Value::Value(const MyString& value) : type(ValueType::STRING)
-{
-    data.sVal = value;
 }
 
 bool Value::isEmpty() const
@@ -70,7 +71,6 @@ void Value::setErrorState()
 MyString Value::toString() const
 {
     std::ostringstream s;
-    s << data.dVal;
 
     switch (type)
     {
@@ -81,13 +81,16 @@ MyString Value::toString() const
         return MyString("#VALUE");
 
     case ValueType::INT:
-        return MyString(""+data.iVal);
+        s << data.iVal;
+        return MyString(s.str().c_str());
 
     case ValueType::DOUBLE:  
+        s << data.dVal;
         return MyString(s.str().c_str());
 
     case ValueType::BOOL:
-        return MyString(""+data.bVal);
+        s << data.bVal;
+        return MyString((data.bVal) ? "TRUE" : "FALSE");
 
     case ValueType::STRING:
         return data.sVal;

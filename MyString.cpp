@@ -31,7 +31,7 @@ MyString MyString::substr(size_t start, size_t end)
         end = currentSize-1;
     }
 
-    int newLen = end - start + 1;
+    int newLen = end - start+1;
 
     char* res = new char[newLen+1];
 

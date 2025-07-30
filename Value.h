@@ -26,9 +26,9 @@ private:
 public:
 	Value();
 	Value(int value);
-	Value(bool value);
 	Value(double value);
 	Value(const MyString& value);
+	Value(bool value);
 
 	bool isEmpty() const;
 	ValueType getType() const;
