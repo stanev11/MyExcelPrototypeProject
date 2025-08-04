@@ -15,15 +15,29 @@ int main()
 	/*Table table = builder.addRows(5)
 						 .addCols(5)
 						 .build();*/
-	Table table = builder.setInitialTableRows(5)
+	builder.setInitialTableRows(5)
 		.setInitialTableCols(5)
 		.setInitialAlignment(AlignmentType::left)
 		.setAutoFit(false)
 		.setClearConsole(true)
-		.setVisibleCellSymbols(3)
-		.build();
+		.setVisibleCellSymbols(3);
 
-	table.addCell(new SingleValueCell(MyString("okayles")), 3, 1);
+	Table table = builder.build();
+	
+
+	Cell* cell1 = new SingleValueCell(MyString("okayles"));
+	Cell* cell2 = new ReferenceCell(cell1);
+	Cell* cell3 = new SingleValueCell(12);
+
+	table.insertAt(1,4,cell1);
+	table.insertAt(1,0,cell2);
+	table.insertAt(1, 2, cell3);
+
+	//table.deleteAt(3, 1); - NOT WORKING
+
+	/*CellContext ctx;
+	ctx.value = 32;
+	table.insertAt(*cell1, ctx);*/
 
 	TableView view(table);
 	view.render();

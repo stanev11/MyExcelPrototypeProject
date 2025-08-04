@@ -68,7 +68,7 @@ TableBuilder& TableBuilder::setClearConsole(bool val)
 
 TableBuilder& TableBuilder::setCell(int row, int col, Cell& cell)
 {
-    table.addCell(cell, row, col);
+    table.at(row,col)=cell;
 
     return *this;
 }
@@ -80,7 +80,8 @@ Table TableBuilder::build()
     {
         for (size_t j = 0; j < table.getColsCount(); j++)
         {
-            table.addCell(new EmptyCell(), i, j);
+           /*table.setCell(i, j,EmptyCell());*/
+            table.addCell(EmptyCell());
         }
     }
 

@@ -22,7 +22,7 @@ public:
 	void remove(size_t index);
 
 	const T* operator[](size_t index) const;
-	T* operator[](size_t index);
+	T*& operator[](size_t index);
 	void swap(int i, int j);
 
 	size_t find(const T& obj) const;
@@ -72,7 +72,7 @@ const T* HeterogeneousContainer<T>::operator[](size_t index) const
 }
 
 template<class T>
-T* HeterogeneousContainer<T>::operator[](size_t index)
+T*& HeterogeneousContainer<T>::operator[](size_t index)
 {
 	if (index >= size) {
 		throw std::invalid_argument("Wrong index");

@@ -29,17 +29,22 @@ public:
 	void addRow(size_t position);
 	void addCol(size_t position);
 
-	void addCell(Cell& cell,int row,int col);
-	void addCell(Cell* cell,int row,int col);
-
 	void removeCell(const Cell& cell);
 	void removeCell(int row, int col);
 
 	const Cell& at(int row,int col) const;
 	Cell& at(int row,int col);
 
+	void setCell(int row, int col, Cell* cell);
+	void setCell(int row, int col, const Cell& cell);
+
+	void insertAt(int row, int col,const Cell& cell);
+	void insertAt(int row, int col, Cell* cell);
 	void insertAt(int row, int col, const CellContext& ctx);
-	void insertAt(Cell& cell, const CellContext& ctx);
+	void insertAt(int row, int col, const Value& value);
+
+	void addCell(Cell* cell);
+	void addCell(const Cell& cell);
 
 	void deleteAt(int row, int col);
 

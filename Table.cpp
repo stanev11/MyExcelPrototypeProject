@@ -84,45 +84,18 @@ void Table::addCol(size_t position)
     cols++;
 }
 
-void Table::addCell(Cell& cell,int row,int col)
-{
-    if (!isValidPosition(row,col))
-    {
-        //throw - TODO
-    }
-
-    cell.setRow(row);
-    cell.setCol(col);
-
-    cells.insert(cell, row * cols + col);
-}
-
-void Table::addCell(Cell* cell,int row,int col)
-{
-    if (!isValidPosition(row,col))
-    {
-        //throw - TODO
-    }
-
-    if (cell != nullptr)
-    {
-
-        cell->setRow(row);
-        cell->setCol(col);
-
-        cells.insert(*cell, row * cols + col);
-    }
-    else
-    {
-        //TODO - throw
-    }
-}
-
 void Table::removeCell(const Cell& cell)
 {
-    int index = cells.find(cell);
+    try
+    {
+        int index = cells.find(cell);
 
-    cells.remove(index);
+        cells.remove(index);
+    }
+    catch (const std::exception&)
+    {
+
+    }
 }
 
 void Table::removeCell(int row, int col)
@@ -130,6 +103,7 @@ void Table::removeCell(int row, int col)
     if (!isValidPosition(row, col))
     {
         //throw - TODO
+        return;
     }
 
     cells.remove(row * rows + col);
@@ -156,50 +130,89 @@ Cell& Table::at(int row,int col)
     return *cells[row * cols + col];
 }
 
+void Table::setCell(int row, int col, Cell* cell)
+{
+    if (!isValidPosition(row, col))
+    {
+        //TODO
+    }
+
+    at(row, col) = *cell;
+}
+
+void Table::setCell(int row, int col, const Cell& cell)
+{
+    if (!isValidPosition(row, col))
+    {
+        //TODO
+    }
+
+    at(row, col) = cell;
+}
+
+void Table::insertAt(int row, int col,const Cell& cell)
+{
+    if (!isValidPosition(row, col))
+    {
+        //TODO
+    }
+
+    cells[row * cols + col] = cell.clone();
+
+    cells[row * cols + col]->setRow(row);
+    cells[row * cols + col]->setCol(col);
+}
+
+void Table::insertAt(int row, int col, Cell* cell)
+{
+    if (cell == nullptr)
+    {
+        throw std::invalid_argument("Nullptr!");
+    }
+
+    if (!isValidPosition(row, col))
+    {
+        //TODO - throw
+    }
+
+    cell->setRow(row);
+    cell->setCol(col);
+
+    cells[row * cols + col] = cell;
+}
+
 void Table::insertAt(int row, int col, const CellContext& ctx)
 {
-    if (!isValidPosition(row,col))
+    if (!isValidPosition(row, col))
     {
-        //throw - TODO
+        //TOOD
     }
-
-    removeCell(row, col);
 
     Cell* newCell = FactoryCell::createCell(ctx);
 
-    addCell(newCell, row, col);
-
-    newCell->setRow(row);
-    newCell->setCol(col);
+    setCell(row, col, *newCell);
 }
 
-void Table::insertAt(Cell& cell, const CellContext& ctx)
+void Table::insertAt(int row, int col, const Value& value)
 {
-    //int index = cells.find(cell);
-    int row = cell.getRow();
-    int col = cell.getCol();
+    CellContext ctx;
+    ctx.value = value;
 
-    removeCell(cell);
-
-    Cell* newCell = FactoryCell::createCell(ctx);
-
-    /*cells.insert(*newCell, index);*/
-
-    cell = *newCell;
-
-    cell.setRow(row);
-    cell.setCol(col);
+    insertAt(row, col, ctx);
 }
 
-void Table::deleteAt(int row, int col)
+void Table::addCell(Cell* cell)
 {
-    if (!isValidPosition(row,col))
+    if (cell == nullptr)
     {
-        //throw - TODO
+        throw std::invalid_argument("Nullptr!");
     }
 
-    removeCell(row, col);
+    cells.addObject(cell);
+}
 
-    addCell(new EmptyCell(), row, col);
+void Table::addCell(const Cell& cell)
+{
+    cells.addObject(cell);
 }
 
