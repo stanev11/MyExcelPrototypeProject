@@ -147,7 +147,7 @@ void Table::setCell(int row, int col, const Cell& cell)
         //TODO
     }
 
-    at(row, col) = cell;
+    cells[row*cols+col] = cell.clone();
 }
 
 void Table::insertAt(int row, int col,const Cell& cell)

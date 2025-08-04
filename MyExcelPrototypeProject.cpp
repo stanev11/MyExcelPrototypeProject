@@ -12,9 +12,6 @@ int main()
 {
 	TableBuilder builder;
 
-	/*Table table = builder.addRows(5)
-						 .addCols(5)
-						 .build();*/
 	builder.setInitialTableRows(5)
 		.setInitialTableCols(5)
 		.setInitialAlignment(AlignmentType::left)
@@ -31,7 +28,11 @@ int main()
 
 	table.insertAt(1,4,cell1);
 	table.insertAt(1,0,cell2);
-	table.insertAt(1, 2, cell3);
+	table.insertAt(1, 2, 12);
+	table.insertAt(1, 4, MyString("abcde"));
+	table.insertAt(2, 3, 3.0);
+
+	CellContext ctx;
 
 	//table.deleteAt(3, 1); - NOT WORKING
 
