@@ -4,6 +4,17 @@
 #include <iostream>
 #include "FactoryProperty.h"
 #include "FactoryCell.h"
+#include "FactoryOperation.h"
+
+#include "SumOperationParams.h"
+#include "AverageOperationParams.h"
+#include "SubstrOperationParams.h"
+#include "LenOperationParams.h"
+#include "MinOperationParams.h"
+#include "CountOperationParams.h"
+
+#include "ValueParameter.h"
+#include "CellParameter.h"
 
 #include "TableBuilder.h"
 #include "TableView.h"
@@ -17,7 +28,7 @@ int main()
 		.setInitialAlignment(AlignmentType::left)
 		.setAutoFit(false)
 		.setClearConsole(true)
-		.setVisibleCellSymbols(3);
+		.setVisibleCellSymbols(6);
 
 	Table table = builder.build();
 	
@@ -26,13 +37,20 @@ int main()
 	Cell* cell2 = new ReferenceCell(cell1);
 	Cell* cell3 = new SingleValueCell(12);
 
-	table.insertAt(1,4,cell1);
-	table.insertAt(1,0,cell2);
-	table.insertAt(1, 2, 12);
+	table.insertAt(1,1,cell1);
+	table.insertAt(3,1,cell2);
+	table.insertAt(1, 2, 5);
 	table.insertAt(1, 4, MyString("abcde"));
-	table.insertAt(2, 3, 3.0);
+
 
 	CellContext ctx;
+	CountOperationParams par(RangeParameter(cell1,cell2,&table));
+	//par.params.addObject(ValueParameter(12));
+	//par.params.addObject(ValueParameter(90));
+
+	ctx.operation = FactoryOperation::createOperation(par);
+
+	table.insertAt(0, 0, ctx);
 
 	//table.deleteAt(3, 1); - NOT WORKING
 

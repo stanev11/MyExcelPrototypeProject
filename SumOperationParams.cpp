@@ -1,5 +1,4 @@
 #include "SumOperationParams.h"
-#include "SumOperation.h"
 
 Operation* SumOperationParams::create() const
 {

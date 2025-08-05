@@ -1,6 +1,6 @@
 #pragma once
 #include "Operation.h"
-
+#include "IParameter.h"
 #include "HeterogeneousContainer.hpp"
 
 class AverageOperation : public Operation

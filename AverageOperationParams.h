@@ -1,6 +1,6 @@
 #pragma once
 #include "OperationParams.h"
-#include "HeterogeneousContainer.hpp"
+#include "AverageOperation.h"
 #include "IParameter.h"
 
 struct AverageOprationParams : public OperationParams

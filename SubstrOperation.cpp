@@ -45,7 +45,7 @@ Value SubstrOperation::execute()
 
     MyString res(value.getStringValue());
 
-    return Value(res.substr(startIndex, startIndex + length));
+    return Value(res.substr(startIndex, startIndex + length-1));
 
     //TODO - bad 
 

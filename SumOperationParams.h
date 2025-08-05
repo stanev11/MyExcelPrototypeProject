@@ -1,6 +1,6 @@
 #pragma once
 #include "OperationParams.h"
-#include "HeterogeneousContainer.hpp"
+#include "SumOperation.h"
 #include "IParameter.h"
 
 struct SumOperationParams : public OperationParams

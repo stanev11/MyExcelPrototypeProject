@@ -37,9 +37,11 @@ MyString MyString::substr(size_t start, size_t end)
 
     res[newLen] = '\0';
 
+    int ind = 0;
+
     for (size_t i = start; i <= end; i++)
     {
-        res[i] = data[i];
+        res[ind++] = data[i];
     }
 
     MyString sub(res);

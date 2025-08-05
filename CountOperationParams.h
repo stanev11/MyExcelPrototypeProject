@@ -4,6 +4,8 @@
 
 struct CountOperationParams : public OperationParams
 {
+	CountOperationParams(const RangeParameter& range);
+
 	RangeParameter range;
 
 	Operation* create() const override;

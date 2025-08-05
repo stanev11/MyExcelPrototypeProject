@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 
 // heterogeneous container with no empty spaces
