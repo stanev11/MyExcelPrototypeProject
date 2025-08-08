@@ -3,6 +3,7 @@
 
 Value::Value() : type(ValueType::EMPTY)
 {
+    data.sVal = "";
 }
 
 Value::Value(int value) : type(ValueType::INT)

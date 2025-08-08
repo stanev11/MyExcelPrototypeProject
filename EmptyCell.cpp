@@ -7,11 +7,11 @@ Cell* EmptyCell::clone() const
 
 const Value& EmptyCell::getValue() const
 {
-    return Value();
+    return value;
 }
 
 MyString EmptyCell::toString() const
 {
-    return "";
+    return MyString();
 }
 

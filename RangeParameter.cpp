@@ -26,7 +26,9 @@ MyVector<Value> RangeParameter::getValues() const
     {
         for (size_t j = startCol; j <= endCol; j++)
         {
-            vec.push_back(table->at(i, j).getValue());
+            const Value& value = table->at(i, j).getValue();
+
+            vec.push_back(value);
         }
     }
 

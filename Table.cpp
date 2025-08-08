@@ -106,7 +106,7 @@ void Table::removeCell(int row, int col)
         return;
     }
 
-    cells.remove(row * rows + col);
+    cells.remove((row-1) * cols + (col-1));
 }
 
 const Cell& Table::at(int row,int col) const
@@ -117,7 +117,7 @@ const Cell& Table::at(int row,int col) const
         //throw - TODO
     }
 
-    return *cells[row * cols + col];
+    return *cells[(row - 1) * cols + (col - 1)];
 }
 
 Cell& Table::at(int row,int col)
@@ -127,7 +127,7 @@ Cell& Table::at(int row,int col)
         //throw - TODO
     }
 
-    return *cells[row * cols + col];
+    return *cells[(row - 1) * cols + (col - 1)];
 }
 
 void Table::setCell(int row, int col, Cell* cell)
@@ -147,7 +147,7 @@ void Table::setCell(int row, int col, const Cell& cell)
         //TODO
     }
 
-    cells[row*cols+col] = cell.clone();
+    cells[(row - 1) * cols + (col - 1)] = cell.clone();
 }
 
 void Table::insertAt(int row, int col,const Cell& cell)
@@ -157,10 +157,10 @@ void Table::insertAt(int row, int col,const Cell& cell)
         //TODO
     }
 
-    cells[row * cols + col] = cell.clone();
+    cells[(row - 1) * cols + (col - 1)] = cell.clone();
 
-    cells[row * cols + col]->setRow(row);
-    cells[row * cols + col]->setCol(col);
+    cells[(row - 1) * cols + (col - 1)]->setRow(row);
+    cells[(row - 1) * cols + (col - 1)]->setCol(col);
 }
 
 void Table::insertAt(int row, int col, Cell* cell)
@@ -178,7 +178,7 @@ void Table::insertAt(int row, int col, Cell* cell)
     cell->setRow(row);
     cell->setCol(col);
 
-    cells[row * cols + col] = cell;
+    cells[(row-1) * cols + (col-1)] = cell;
 }
 
 void Table::insertAt(int row, int col, const CellContext& ctx)

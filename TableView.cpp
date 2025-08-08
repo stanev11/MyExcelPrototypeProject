@@ -64,9 +64,9 @@ void TableView::render()
 	const int padding = 1;
 	const char seperator = '|';
 
-	for (size_t i = 0; i < table.getRowsCount(); i++)
+	for (size_t i = 1; i <= table.getRowsCount(); i++)
 	{
-		for (size_t j = 0; j < table.getColsCount(); j++)
+		for (size_t j = 1; j <= table.getColsCount(); j++)
 		{
 			const Cell& cell = table.at(i, j);
 			

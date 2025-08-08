@@ -38,25 +38,26 @@ int main()
 	Cell* cell3 = new SingleValueCell(12);
 
 	table.insertAt(1,1,cell1);
-	table.insertAt(3,1,cell2);
-	table.insertAt(1, 2, 5);
+	table.insertAt(1,5,cell2);
+	table.insertAt(1, 3, 5);
 	table.insertAt(1, 4, MyString("abcde"));
+	table.insertAt(2, 4, cell3);
 
 
 	CellContext ctx;
-	CountOperationParams par(RangeParameter(cell1,cell2,&table));
+	CountOperationParams par(RangeParameter(cell1,cell3,&table));
 	//par.params.addObject(ValueParameter(12));
 	//par.params.addObject(ValueParameter(90));
 
 	ctx.operation = FactoryOperation::createOperation(par);
-
-	table.insertAt(0, 0, ctx);
 
 	//table.deleteAt(3, 1); - NOT WORKING
 
 	/*CellContext ctx;
 	ctx.value = 32;
 	table.insertAt(*cell1, ctx);*/
+
+	table.insertAt(3, 1, ctx);
 
 	TableView view(table);
 	view.render();
