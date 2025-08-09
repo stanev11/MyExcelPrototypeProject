@@ -34,15 +34,14 @@ int main()
 	Table table = builder.build();
 	
 
-	Cell* cell1 = FactoryCell::createCell(CellContext(12));
-	Cell* cell2 = FactoryCell::createCell(CellContext(cell1));
+	Cell* cell1 = FactoryCell::createCell(CellContext(11.35));
+	Cell* cell2 = FactoryCell::createCell(CellContext(11.38));
 	Cell* cell3 = FactoryCell::createCell(CellContext(MyString("Yasen")));
 
 	table.insertAt(1,1,cell1);
 	table.insertAt(1,2,cell2);
-	table.insertAt(1, 3, 5);
+	table.insertAt(1, 3, cell3);
 	table.insertAt(1, 4, MyString("abcde"));
-	table.insertAt(2, 1, cell3);
 
 	//table.deleteAt(3, 1); - NOT WORKING
 

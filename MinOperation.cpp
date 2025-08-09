@@ -12,14 +12,22 @@ Operation* MinOperation::clone() const
 
 Value MinOperation::execute()
 {
-	double min = 0;
+	double min = INT_MAX;
 	bool hasNum = false;
 
 	const MyVector<Value> values = range.getValues();
 
 	for (size_t i = 0; i < values.getSize(); i++)
 	{
-		if (values[i].getType() == ValueType::INT || values[i].getType() == ValueType::DOUBLE)
+		if (values[i].getType() == ValueType::INT)
+		{
+			if (min > values[i].getIntValue() || !hasNum)
+			{
+				min = values[i].getIntValue();
+				hasNum = true;
+			}
+		}
+		else if (values[i].getType() == ValueType::DOUBLE)
 		{
 			if (min - values[i].getDoubleValue() > 0.0000000 || !hasNum)
 			{
