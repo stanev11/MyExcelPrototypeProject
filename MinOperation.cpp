@@ -1,5 +1,5 @@
 #include "MinOperation.h"
-
+#include "Cell.h"
 
 MinOperation::MinOperation(const RangeParameter& range) : range(range)
 {

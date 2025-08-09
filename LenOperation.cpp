@@ -30,3 +30,4 @@ Value LenOperation::execute()
    
    return Value(len);
 }
+

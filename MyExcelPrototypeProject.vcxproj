@@ -131,6 +131,7 @@
     <ClCompile Include="AverageOperation.cpp" />
     <ClCompile Include="AverageOperationParams.cpp" />
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="CellContext.cpp" />
     <ClCompile Include="CellParameter.cpp" />
     <ClCompile Include="ClearConsoleAfterCommand.cpp" />
     <ClCompile Include="ConcatOperation.cpp" />

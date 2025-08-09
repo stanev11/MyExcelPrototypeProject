@@ -13,8 +13,16 @@ const Value& FormulaCell::getValue() const
 {
 	if (!evaluated)
 	{
-		cachedResult = operation->execute();
-		evaluated = true;
+		try
+		{
+			cachedResult = operation->execute();
+			evaluated = true;
+		}
+		catch (const std::exception&)
+		{
+			cachedResult.setErrorState();
+			evaluated = false;
+		}
 	}
 	return cachedResult;
 }

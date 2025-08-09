@@ -1,4 +1,5 @@
 #include "AverageOperation.h"
+#include "CellParameter.h"
 
 AverageOperation::AverageOperation()
 {
@@ -53,7 +54,7 @@ Value AverageOperation::execute()
         return v;
     }
 
-    return Value(result/size);
+    return Value(result / size);
 
     //! DUPLICATING CODE WITH SUM OPERATION - TODO !
 }

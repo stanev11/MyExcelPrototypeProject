@@ -46,3 +46,4 @@ Value ConcatOperation::execute()
 
 	return Value(res);
 }
+
