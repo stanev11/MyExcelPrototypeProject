@@ -1,5 +1,9 @@
 #include "SubstrOperation.h"
 
+#include "Cell.h"
+
+#include "CellParameter.h"
+
 SubstrOperation::SubstrOperation(IParameter* parameter, int startIndex, int len) : parameter(parameter),startIndex(startIndex),length(len)
 {
     if (parameter == nullptr)
@@ -49,4 +53,19 @@ Value SubstrOperation::execute()
 
     //TODO - bad 
 
+}
+
+bool SubstrOperation::hasCircularReference(const Cell& cell) const
+{
+    if (parameter->getType() == ParameterType::CellParameter)
+    {
+        const CellParameter* cellParam = dynamic_cast<const CellParameter*>(parameter);
+
+        if (cellParam->getCell().getRow() == cell.getRow() && cellParam->getCell().getCol() == cell.getCol())
+        {
+            return true;
+        }
+    }
+
+    return false;
 }

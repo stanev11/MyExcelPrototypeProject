@@ -12,5 +12,7 @@ public:
 
 	Operation* clone() const override;
 	Value execute() override;
+
+	bool hasCircularReference(const Cell& cell) const override;
 };
 

@@ -1,6 +1,9 @@
 #include "AverageOperation.h"
 #include "CellParameter.h"
 
+#include "FormulaCell.h"
+
+
 AverageOperation::AverageOperation()
 {
 }
@@ -57,4 +60,27 @@ Value AverageOperation::execute()
     return Value(result / size);
 
     //! DUPLICATING CODE WITH SUM OPERATION - TODO !
+}
+
+bool AverageOperation::hasCircularReference(const Cell& cell) const
+{
+    int row = cell.getRow();
+    int col = cell.getCol();
+
+    for (size_t i = 0; i < params.getSize(); i++)
+    {
+        const IParameter* param = params[i];
+
+        if (param->getType() == ParameterType::CellParameter)
+        {
+            const CellParameter* cellParam = dynamic_cast<const CellParameter*>(param);
+
+            if (cellParam->getCell().getRow() == row && cellParam->getCell().getCol() == col)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }

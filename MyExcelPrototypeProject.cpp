@@ -11,6 +11,7 @@
 #include "SubstrOperationParams.h"
 #include "LenOperationParams.h"
 #include "MinOperationParams.h"
+#include "MaxOperationParams.h"
 #include "CountOperationParams.h"
 
 #include "ValueParameter.h"
@@ -40,7 +41,7 @@ int main()
 
 	table.insertAt(1,1,cell1);
 	table.insertAt(1,2,cell2);
-	table.insertAt(1, 3, cell3);
+	table.insertAt(2, 3, cell3);
 	table.insertAt(1, 4, MyString("abcde"));
 
 	//table.deleteAt(3, 1); - NOT WORKING
@@ -50,7 +51,7 @@ int main()
 	
 	Cell* cell4 = FactoryCell::createCell(CellContext(op));
 
-	table.insertAt(2, 3, cell4);
+	table.insertAt(2, 4, cell4);
 
 	TableView view(table);
 	view.render();

@@ -46,3 +46,13 @@ Value MinOperation::execute()
 
 	return Value(min);
 }
+
+bool MinOperation::hasCircularReference(const Cell& cell) const
+{
+
+	const Cell& start = range.getStart();
+	const Cell& end = range.getEnd();
+
+	return start.getRow() <= cell.getRow() && end.getRow() >= cell.getRow()
+		&& start.getCol() <= cell.getCol() && end.getCol() >= cell.getCol();
+}

@@ -1,5 +1,9 @@
 #include "SumOperation.h"
 
+#include "CellParameter.h"
+
+#include "Cell.h"
+
 SumOperation::SumOperation()
 {
 }
@@ -68,4 +72,27 @@ Value SumOperation::execute()
     }
 
     return Value(result);
+}
+
+bool SumOperation::hasCircularReference(const Cell& cell) const
+{
+    int row = cell.getRow();
+    int col = cell.getCol();
+
+    for (size_t i = 0; i < params.getSize(); i++)
+    {
+        const IParameter* param = params[i];
+
+        if (param->getType() == ParameterType::CellParameter)
+        {
+            const CellParameter* cellParam = dynamic_cast<const CellParameter*>(param);
+
+            if (cellParam->getCell().getRow() == row && cellParam->getCell().getCol() == col)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }

@@ -308,5 +308,8 @@
     <ClInclude Include="CountOperationParams.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ParameterType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

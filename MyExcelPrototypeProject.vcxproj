@@ -209,6 +209,7 @@
     <ClInclude Include="MyVector.hpp" />
     <ClInclude Include="Operation.h" />
     <ClInclude Include="OperationParams.h" />
+    <ClInclude Include="ParameterType.h" />
     <ClInclude Include="Property.h" />
     <ClInclude Include="PropertyType.h" />
     <ClInclude Include="RangeParameter.h" />

@@ -1,7 +1,7 @@
 
 #include "ValueParameter.h"
 
-ValueParameter::ValueParameter(const Value& value) : value(value)
+ValueParameter::ValueParameter(const Value& value) : value(value), IParameter(ParameterType::ValueParameter)
 {
 }
 

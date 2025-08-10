@@ -2,7 +2,7 @@
 
 #include "Table.h"
 
-RangeParameter::RangeParameter(Cell* start, Cell* end,Table* table) : start(start),end(end),table(table)
+RangeParameter::RangeParameter(Cell* start, Cell* end,Table* table) : start(start),end(end),table(table), IParameter(ParameterType::RangeParameter)
 {
     //TODO - nullptr !
 }

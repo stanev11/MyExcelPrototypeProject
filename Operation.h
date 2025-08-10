@@ -1,5 +1,7 @@
 #pragma once
 
+class Cell;
+
 #include "IParameter.h"
 #include "Value.h"
 
@@ -10,6 +12,8 @@ public:
 	virtual ~Operation() = default;
 
 	virtual Value execute() = 0;
+
+	virtual bool hasCircularReference(const Cell& cell) const = 0;
 
 	//virtual void undo();
 	//virtual void redo();

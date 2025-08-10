@@ -1,7 +1,7 @@
 #include "CellParameter.h"
 #include "Cell.h"
 
-CellParameter::CellParameter(Cell* cell) : cell(cell)
+CellParameter::CellParameter(Cell* cell) : cell(cell),IParameter(ParameterType::CellParameter)
 {
     //TODO - nullptr !
 }
@@ -17,5 +17,10 @@ MyVector<Value> CellParameter::getValues() const
     vec.push_back(cell->getValue());
 
     return vec;
+}
+
+const Cell& CellParameter::getCell() const
+{
+    return *cell;
 }
 

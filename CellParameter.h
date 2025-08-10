@@ -12,5 +12,7 @@ public:
 	IParameter* clone() const override;
 
 	MyVector<Value> getValues() const override;
+
+	const Cell& getCell() const;
 };
 

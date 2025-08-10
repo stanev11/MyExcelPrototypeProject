@@ -1,5 +1,9 @@
 #include "LenOperation.h"
 
+#include "Cell.h"
+
+#include "CellParameter.h"
+
 LenOperation::LenOperation(IParameter* parameter) : parameter(parameter)
 {
     if (parameter==nullptr)
@@ -29,5 +33,20 @@ Value LenOperation::execute()
    int len = str.length();
    
    return Value(len);
+}
+
+bool LenOperation::hasCircularReference(const Cell& cell) const
+{
+    if (parameter->getType() == ParameterType::CellParameter)
+    {
+        const CellParameter* cellParam = dynamic_cast<const CellParameter*>(parameter);
+
+        if (cellParam->getCell().getRow() == cell.getRow() && cellParam->getCell().getCol() == cell.getCol())
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
 

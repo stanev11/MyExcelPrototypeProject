@@ -11,18 +11,15 @@ Cell* FormulaCell::clone() const
 
 const Value& FormulaCell::getValue() const
 {
-	if (!evaluated)
+	if (operation->hasCircularReference(*this))
 	{
-		try
-		{
-			cachedResult = operation->execute();
-			evaluated = true;
-		}
-		catch (const std::exception&)
-		{
-			cachedResult.setErrorState();
-			evaluated = false;
-		}
+		cachedResult.setErrorState();
+	}
+
+	else if (!evaluated)
+	{
+		cachedResult = operation->execute();
+		evaluated = true;
 	}
 	return cachedResult;
 }
