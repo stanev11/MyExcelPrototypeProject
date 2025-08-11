@@ -15,7 +15,8 @@ public:
 
 	virtual bool hasCircularReference(const Cell& cell) const = 0;
 
-	//virtual void undo();
+	//virtual void undo() = 0;
+
 	//virtual void redo();
 };
 

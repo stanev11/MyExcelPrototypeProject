@@ -3,28 +3,6 @@
 #include "CellContext.h"
 #include "FactoryCell.h"
 
-//Table::Table() : Table(INITIAL_ROWS,INITIAL_COLS)
-//{
-//}
-//
-//Table::Table(int rows, int cols)
-//{
-//    if (rows > 0) this->rows = rows;
-//    if (cols > 0) this->cols = cols;
-//
-//    for (size_t i = 0; i < rows; i++)
-//    {
-//        for (size_t j= 0; j < cols; j++)
-//        {
-//            cells.insert(EmptyCell(), i * rows + j);
-//        }
-//    }
-//}
-//
-//Table::Table(const HeterogeneousContainer<Cell>& cells) : cells(cells)
-//{
-//}
-
 void Table::setInitialRows(size_t count)
 {
     this->rows = count;
@@ -214,5 +192,17 @@ void Table::addCell(Cell* cell)
 void Table::addCell(const Cell& cell)
 {
     cells.addObject(cell);
+}
+
+void Table::deleteAt(int row, int col)
+{
+    if (!isValidPosition(row, col))
+    {
+        throw std::invalid_argument("Invalid row or col!");
+    }
+
+    Cell& cell = at(row, col);
+
+    setCell(row, col, EmptyCell());
 }
 

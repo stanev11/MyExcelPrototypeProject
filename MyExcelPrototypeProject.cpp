@@ -46,12 +46,18 @@ int main()
 
 	//table.deleteAt(3, 1); - NOT WORKING
 
-	MinOperationParams par(RangeParameter(cell1, cell3, &table));
+
+	AverageOprationParams par;
+	par.params.addObject(new CellParameter(cell1));
+	par.params.addObject(new CellParameter(cell2));
+
 	Operation* op = FactoryOperation::createOperation(par);
-	
+
 	Cell* cell4 = FactoryCell::createCell(CellContext(op));
 
-	table.insertAt(2, 4, cell4);
+	table.insertAt(1, 3, cell4);
+
+	table.setCell(1, 3,EmptyCell());
 
 	TableView view(table);
 	view.render();

@@ -158,6 +158,7 @@
     <ClCompile Include="MyExcelPrototypeProject.cpp" />
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="Operation.cpp" />
+    <ClCompile Include="ProgramController.cpp" />
     <ClCompile Include="Property.cpp" />
     <ClCompile Include="RangeParameter.cpp" />
     <ClCompile Include="ReferenceCell.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="Operation.h" />
     <ClInclude Include="OperationParams.h" />
     <ClInclude Include="ParameterType.h" />
+    <ClInclude Include="ProgramController.h" />
     <ClInclude Include="Property.h" />
     <ClInclude Include="PropertyType.h" />
     <ClInclude Include="RangeParameter.h" />
