@@ -6,7 +6,7 @@
 
 #include "MyPropertyException.h"
 
-void ProgramController::openTable(const MyString& configFile)
+void ProgramController::openTable(const MyString& tableName,const MyString& configFile)
 {
 	std::ifstream ifs(configFile.c_str(),std::ios::binary);
 
@@ -14,6 +14,8 @@ void ProgramController::openTable(const MyString& configFile)
 	{
 		throw std::logic_error("Couldn't open file for reading!");
 	}
+
+	currentFile = configFile;
 
 	TableBuilder builder;
 
@@ -126,4 +128,43 @@ void ProgramController::openTable(const MyString& configFile)
 	}
 
 	currentTable = builder.build();
+}
+
+void ProgramController::createTable(const MyString& configFile)
+{
+	currentFile = configFile;
+
+	TableBuilder builder;
+
+	currentTable = builder.build();
+}
+
+void ProgramController::saveTable() const
+{
+	std::ofstream ofs(currentFile.c_str(), std::ios::binary);
+
+	if (!ofs.is_open())
+	{
+		throw std::logic_error("Couldn't open file to write!");
+	}
+
+	const TableProperties& props = currentTable.getTableProps();
+
+	int initTableRows = props.initialTableRows;
+	int initTableCols = props.initialTableCols;
+	int maxTableRows = props.maxTableRows;
+	int maxTableCols = props.maxTableCols;
+	bool autoFit = props.autoFit;
+	int visibleCellSymbols = props.visibleCellSymbols;
+	int initAlignment = (int)props.initialAlignment;
+	bool clearConsole = props.clearConsoleAfterCommand;
+
+	ofs.write((const char*)&initTableRows, sizeof(initTableRows));
+	ofs.write((const char*)&initTableCols, sizeof(initTableCols));
+	ofs.write((const char*)&maxTableRows, sizeof(maxTableRows));
+	ofs.write((const char*)&maxTableCols, sizeof(maxTableCols));
+	ofs.write((const char*)&autoFit, sizeof(autoFit));
+	ofs.write((const char*)&visibleCellSymbols, sizeof(visibleCellSymbols));
+	ofs.write((const char*)&initAlignment, sizeof(initAlignment));
+	ofs.write((const char*)&clearConsole, sizeof(clearConsole));
 }

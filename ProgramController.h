@@ -6,11 +6,12 @@
 class ProgramController
 {
 private:
+
 	MyString currentFile;
 	Table currentTable;
 
 public:
-	void openTable(const MyString& configFile);
+	void openTable(const MyString& tableName,const MyString& configFile);
 	void createTable(const MyString& configFile);
 
 	void saveTable() const;
