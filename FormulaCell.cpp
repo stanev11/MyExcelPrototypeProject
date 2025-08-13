@@ -1,6 +1,6 @@
 #include "FormulaCell.h"
 
-FormulaCell::FormulaCell(Operation* op) : operation(op)
+FormulaCell::FormulaCell(Operation* op) : operation(op) , Cell(CellType::FormulaCell)
 {
 }
 

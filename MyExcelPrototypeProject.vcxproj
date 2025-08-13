@@ -156,6 +156,8 @@
     <ClCompile Include="MinOperation.cpp" />
     <ClCompile Include="MinOperationParams.cpp" />
     <ClCompile Include="MyExcelPrototypeProject.cpp" />
+    <ClCompile Include="MyException.cpp" />
+    <ClCompile Include="MyPropertyException.cpp" />
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="Operation.cpp" />
     <ClCompile Include="ProgramController.cpp" />
@@ -206,6 +208,8 @@
     <ClInclude Include="MaxTableRows.h" />
     <ClInclude Include="MinOperation.h" />
     <ClInclude Include="MinOperationParams.h" />
+    <ClInclude Include="MyException.h" />
+    <ClInclude Include="MyPropertyException.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyVector.hpp" />
     <ClInclude Include="Operation.h" />

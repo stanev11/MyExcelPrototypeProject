@@ -1,10 +1,10 @@
 #include "ReferenceCell.h"
 
-ReferenceCell::ReferenceCell() : to(nullptr)
+ReferenceCell::ReferenceCell() : ReferenceCell(nullptr)
 {
 }
 
-ReferenceCell::ReferenceCell(Cell* to) : to(to)
+ReferenceCell::ReferenceCell(Cell* to) : to(to), Cell(CellType::ReferenceCell)
 {
 }
 

@@ -1,10 +1,10 @@
 #include "SingleValueCell.h"
 
-SingleValueCell::SingleValueCell()
+SingleValueCell::SingleValueCell() : Cell(CellType::SingleValueCell)
 {
 }
 
-SingleValueCell::SingleValueCell(const Value& value) : value(value)
+SingleValueCell::SingleValueCell(const Value& value) : value(value),Cell(CellType::SingleValueCell)
 {
 }
 

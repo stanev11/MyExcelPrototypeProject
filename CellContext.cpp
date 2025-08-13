@@ -1,10 +1,14 @@
 #include "CellContext.h"
 
-CellContext::CellContext(const Value& value) : value(value)
+CellContext::CellContext(const CellType& cellType) : type(cellType)
 {
 }
 
-CellContext::CellContext(Operation* op)
+CellContext::CellContext(const Value& value) : type(CellType::SingleValueCell), value(value)
+{
+}
+
+CellContext::CellContext(Operation* op) : type(CellType::FormulaCell)
 {
 	if (op == nullptr)
 	{
@@ -14,7 +18,7 @@ CellContext::CellContext(Operation* op)
 	operation = op;
 }
 
-CellContext::CellContext(Cell* reference)
+CellContext::CellContext(Cell* reference) : type(CellType::ReferenceCell)
 {
 	if (reference == nullptr)
 	{

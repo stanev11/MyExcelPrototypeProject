@@ -7,6 +7,8 @@ class EmptyCell : public Cell
 private:
 	Value value;
 public:
+	EmptyCell();
+
 	Cell* clone() const override;
 	const Value& getValue() const override;
 	

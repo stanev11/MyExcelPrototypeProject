@@ -1,6 +1,10 @@
 #pragma once
 #include "Cell.h"
 
+Cell::Cell(CellType type) : type(type)
+{
+}
+
 int Cell::getRow() const
 {
     return row;
@@ -29,6 +33,11 @@ void Cell::setCol(int col)
     }
 
     this->col = col;
+}
+
+const CellType& Cell::getCellType() const
+{
+    return type;
 }
 
 bool operator==(const Cell& lhs, const Cell& rhs)

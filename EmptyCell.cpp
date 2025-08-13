@@ -1,5 +1,9 @@
 #include "EmptyCell.h"
 
+EmptyCell::EmptyCell() : Cell(CellType::Empty)
+{
+}
+
 Cell* EmptyCell::clone() const
 {
     return new EmptyCell(*this);
