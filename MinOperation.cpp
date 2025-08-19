@@ -1,7 +1,7 @@
 #include "MinOperation.h"
 #include "Cell.h"
 
-MinOperation::MinOperation(const RangeParameter& range) : range(range)
+MinOperation::MinOperation(const RangeParameter& range) : range(range),Operation(FormulaType::MIN)
 {
 }
 

@@ -4,7 +4,7 @@
 
 #include "CellParameter.h"
 
-SubstrOperation::SubstrOperation(IParameter* parameter, int startIndex, int len) : parameter(parameter),startIndex(startIndex),length(len)
+SubstrOperation::SubstrOperation(IParameter* parameter, int startIndex, int len) : parameter(parameter),startIndex(startIndex),length(len),Operation(FormulaType::SUBSTR)
 {
     if (parameter == nullptr)
     {

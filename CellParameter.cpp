@@ -24,3 +24,17 @@ const Cell& CellParameter::getCell() const
     return *cell;
 }
 
+std::ofstream& CellParameter::saveToBinaryFile(std::ofstream& ofs) const
+{
+    if (!ofs.is_open())
+    {
+        throw std::logic_error("Couldn't open file to write!");
+    }
+
+    int row = cell->getRow();
+    int col = cell->getCol();
+
+    ofs.write((const char*)&row, sizeof(int)); 
+    ofs.write((const char*)&col, sizeof(int));
+}
+

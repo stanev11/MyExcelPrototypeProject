@@ -215,7 +215,7 @@
     <ClInclude Include="FormulaCell.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FormulaName.h">
+    <ClInclude Include="FormulaType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IParameter.h">
@@ -327,6 +327,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MyPropertyException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CellType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

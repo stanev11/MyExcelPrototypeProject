@@ -8,7 +8,6 @@ class SumOperation : public Operation
 private:
 	HeterogeneousContainer<IParameter> params;
 public:
-	SumOperation();
 	SumOperation(const HeterogeneousContainer<IParameter>& params);
 
 	void addParameter(IParameter* parameter);
@@ -17,5 +16,7 @@ public:
 	Value execute() override;
 
 	bool hasCircularReference(const Cell& cell) const override;
+
+	virtual std::ofstream& saveToBinaryFile(std::ofstream& ofs) const override;
 };
 

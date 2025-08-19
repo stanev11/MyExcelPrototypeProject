@@ -44,3 +44,23 @@ const Cell& RangeParameter::getEnd() const
 {
     return *end;
 }
+
+std::ofstream& RangeParameter::saveToBinaryFile(std::ofstream& ofs) const
+{
+    if (!ofs.is_open())
+    {
+        throw std::logic_error("Couldn't open file to write!");
+    }
+
+    int startRow = start->getRow();
+    int startCol = start->getCol();
+
+    ofs.write((const char*)&startRow, sizeof(int));
+    ofs.write((const char*)&startCol, sizeof(int));
+
+    int endRow = end->getRow();
+    int endCol = end->getCol();
+
+    ofs.write((const char*)&endRow, sizeof(int));
+    ofs.write((const char*)&endCol, sizeof(int));
+}

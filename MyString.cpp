@@ -51,6 +51,17 @@ MyString MyString::substr(size_t start, size_t end)
     return sub;   
 }
 
+std::ofstream& MyString::saveToBinaryFile(std::ofstream& ofs) const
+{
+    if (!ofs.is_open())
+    {
+        throw std::logic_error("Couldn't open file for writing!");
+    }
+
+    ofs.write((const char*)&currentSize, sizeof(int));
+    ofs.write((const char*)&data, currentSize);
+}
+
 MyString::MyString(size_t stringLength)
 {
     allocatedDataCapacity = dataToAllocByStringLen(stringLength);

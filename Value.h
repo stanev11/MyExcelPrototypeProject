@@ -1,5 +1,6 @@
 #pragma once
 #include "MyString.h"
+#include "fstream"
 
 enum class ValueType
 {
@@ -38,8 +39,16 @@ public:
 	bool getBoolValue() const;
 	const MyString& getStringValue() const;
 
+	void setIntValue(int val);
+	void setDoubleValue(double val);
+	void setBoolValue(bool val);
+	void setStringValue(const MyString& val);
+	void setType(ValueType type);
+
 	void releaseValue();
 	void setErrorState();
 	
 	MyString toString() const;
+
+	std::ofstream& saveToBinaryFile(std::ofstream& ofs) const;
 };

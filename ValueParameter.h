@@ -12,4 +12,6 @@ public:
 	IParameter* clone() const override;
 
 	MyVector<Value> getValues() const override;
+
+	std::ofstream& saveToBinaryFile(std::ofstream& ofs) const override;
 };

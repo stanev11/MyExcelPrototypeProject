@@ -20,5 +20,7 @@ public:
 
 	const Cell& getStart() const;
 	const Cell& getEnd() const;
+
+	std::ofstream& saveToBinaryFile(std::ofstream& ofs) const override;
 };
 

@@ -2,7 +2,7 @@
 
 #include "Cell.h"
 
-ConcatOperation::ConcatOperation(const RangeParameter& range, char delim) : range(range),delimiter(delim)
+ConcatOperation::ConcatOperation(const RangeParameter& range, char delim) : range(range),delimiter(delim), Operation(FormulaType::CONCAT)
 {
 }
 
@@ -56,5 +56,17 @@ bool ConcatOperation::hasCircularReference(const Cell& cell) const
 
 	return start.getRow() <= cell.getRow() && end.getRow() >= cell.getRow()
 		&& start.getCol() <= cell.getCol() && end.getCol() >= cell.getCol();
+}
+
+std::ofstream& ConcatOperation::saveToBinaryFile(std::ofstream& ofs) const
+{
+	if (!ofs.is_open())
+	{
+		throw std::logic_error("Couldn't open for writing!");
+	}
+
+	range.saveToBinaryFile(ofs);
+
+
 }
 

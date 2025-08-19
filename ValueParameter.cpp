@@ -18,3 +18,13 @@ MyVector<Value> ValueParameter::getValues() const
 	vec.push_back(value);
 	return vec;
 }
+
+std::ofstream& ValueParameter::saveToBinaryFile(std::ofstream& ofs) const
+{
+	if (!ofs.is_open())
+	{
+		throw std::logic_error("Couldn't open file to write!");
+	}
+
+	value.saveToBinaryFile(ofs);
+}

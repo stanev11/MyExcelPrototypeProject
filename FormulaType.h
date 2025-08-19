@@ -1,5 +1,5 @@
 #pragma once
-enum class FormulaName
+enum class FormulaType
 {
 	NONE,
 	SUM,

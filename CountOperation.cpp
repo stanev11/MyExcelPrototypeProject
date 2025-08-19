@@ -2,7 +2,7 @@
 
 #include "Cell.h"
 
-CountOperation::CountOperation(const RangeParameter& range) : range(range)
+CountOperation::CountOperation(const RangeParameter& range) : range(range),Operation(FormulaType::COUNT)
 {
 }
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "fstream"
 
 class MyString
 {
@@ -27,6 +28,8 @@ public:
     friend std::istream& operator>>(std::istream& is, MyString& str);
 
     MyString substr(size_t start, size_t end);
+
+    std::ofstream& saveToBinaryFile(std::ofstream& ofs) const;
 
 private:
     explicit MyString(size_t stringLength);

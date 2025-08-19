@@ -4,11 +4,7 @@
 
 #include "Cell.h"
 
-SumOperation::SumOperation()
-{
-}
-
-SumOperation::SumOperation(const HeterogeneousContainer<IParameter>& params) : params(params)
+SumOperation::SumOperation(const HeterogeneousContainer<IParameter>& params) : params(params), Operation(FormulaType::SUM)
 {
 }
 
@@ -95,4 +91,34 @@ bool SumOperation::hasCircularReference(const Cell& cell) const
     }
 
     return false;
+}
+
+std::ofstream& SumOperation::saveToBinaryFile(std::ofstream& ofs) const
+{
+    if (!ofs.is_open())
+    {
+        throw std::logic_error("File is not open for writing!");
+    }
+
+    ofs.write((const char*)(int)&formulaType, sizeof(int));
+
+    int size = params.getSize();
+    ofs.write((const char*)&size, sizeof(int));
+
+    for (size_t i = 0; i < size; i++)
+    {
+        ParameterType paramType = params[i]->getType();
+        ofs.write((const char*)&paramType, sizeof(int));
+        //Again = implicit cast
+
+        MyVector<Value> values = params[i]->getValues();
+
+        int valuesSize = values.getSize();
+        ofs.write((const char*)&valuesSize, sizeof(int));
+
+        for (size_t j = 0; j < valuesSize; j++)
+        {
+            values[j].saveToBinaryFile(ofs);
+        }
+    }
 }

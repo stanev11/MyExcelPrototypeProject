@@ -59,6 +59,31 @@ const MyString& Value::getStringValue() const
     if (type == ValueType::STRING) return data.sVal;
 }
 
+void Value::setIntValue(int val)
+{
+    data.iVal = val;
+}
+
+void Value::setDoubleValue(double val)
+{
+    data.dVal = val;
+}
+
+void Value::setBoolValue(bool val)
+{
+    data.bVal = val;
+}
+
+void Value::setStringValue(const MyString& val)
+{
+    data.sVal = val;
+}
+
+void Value::setType(ValueType type)
+{
+    this->type = type;
+}
+
 void Value::releaseValue()
 {
     type = ValueType::EMPTY;
@@ -96,5 +121,34 @@ MyString Value::toString() const
     case ValueType::STRING:
         return data.sVal;
     }
+}
+
+std::ofstream& Value::saveToBinaryFile(std::ofstream& ofs) const
+{
+    if (!ofs.is_open())
+    {
+        throw std::logic_error("File couldn't be opened for writing!");
+    }
+
+    ofs.write((const char*)&type, sizeof(int));
+
+    if (type == ValueType::BOOL)
+    {
+        ofs.write((const char*)&data.bVal, sizeof(bool));
+    }
+    else if (type == ValueType::DOUBLE)
+    {
+        ofs.write((const char*)&data.dVal, sizeof(double));
+    }
+    else if (type == ValueType::INT)
+    {
+        ofs.write((const char*)&data.iVal, sizeof(int));
+    }
+    else if (type == ValueType::STRING)
+    {
+        data.sVal.saveToBinaryFile(ofs);
+    }
+
+    //type EMPTY and type ERROR could be saved too - TODO
 }
 

@@ -184,6 +184,7 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellContext.h" />
     <ClInclude Include="CellParameter.h" />
+    <ClInclude Include="CellType.h" />
     <ClInclude Include="ClearConsoleAfterCommand.h" />
     <ClInclude Include="ConcatOperation.h" />
     <ClInclude Include="ConcatOperationParams.h" />
@@ -194,7 +195,7 @@
     <ClInclude Include="FactoryOperation.h" />
     <ClInclude Include="FactoryProperty.h" />
     <ClInclude Include="FormulaCell.h" />
-    <ClInclude Include="FormulaName.h" />
+    <ClInclude Include="FormulaType.h" />
     <ClInclude Include="HeterogeneousContainer.hpp" />
     <ClInclude Include="InitialAlignment.h" />
     <ClInclude Include="InitialTableCols.h" />

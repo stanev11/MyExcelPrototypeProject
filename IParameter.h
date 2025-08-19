@@ -16,5 +16,7 @@ public:
 	virtual MyVector<Value> getValues() const = 0;
 
 	const ParameterType& getType() const; 
+
+	virtual std::ofstream& saveToBinaryFile(std::ofstream& ofs) const = 0;
 };
 

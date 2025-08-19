@@ -2,7 +2,7 @@
 
 #include "Cell.h"
 
-MaxOperation::MaxOperation(const RangeParameter& range) : range(range)
+MaxOperation::MaxOperation(const RangeParameter& range) : range(range),Operation(FormulaType::MAX)
 { 
 }
 

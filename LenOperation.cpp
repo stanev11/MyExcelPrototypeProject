@@ -4,7 +4,7 @@
 
 #include "CellParameter.h"
 
-LenOperation::LenOperation(IParameter* parameter) : parameter(parameter)
+LenOperation::LenOperation(IParameter* parameter) : parameter(parameter),Operation(FormulaType::LEN)
 {
     if (parameter==nullptr)
     {

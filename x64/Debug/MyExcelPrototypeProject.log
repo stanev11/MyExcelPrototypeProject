@@ -1,2 +1,6 @@
 ﻿  MyExcelPrototypeProject.cpp
+  ProgramController.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ProgramController.cpp(249,7): warning C4101: 'refCol': unreferenced local variable
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ProgramController.cpp(248,7): warning C4101: 'refRow': unreferenced local variable
+  Generating Code...
   MyExcelPrototypeProject.vcxproj -> C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\x64\Debug\MyExcelPrototypeProject.exe

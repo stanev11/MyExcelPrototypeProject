@@ -14,5 +14,7 @@ public:
 	MyVector<Value> getValues() const override;
 
 	const Cell& getCell() const;
+
+	std::ofstream& saveToBinaryFile(std::ofstream& ofs) const override;
 };
 
