@@ -48,3 +48,12 @@ bool MaxOperation::hasCircularReference(const Cell& cell) const
 	return start.getRow() <= cell.getRow() && end.getRow() >= cell.getRow()
 		&& start.getCol() <= cell.getCol() && end.getCol() >= cell.getCol();
 }
+
+std::ofstream& MaxOperation::saveToBinaryFile(std::ofstream& ofs) const
+{
+	Operation::saveToBinaryFile(ofs);
+
+	range.saveToBinaryFile(ofs);
+
+	return ofs;
+}

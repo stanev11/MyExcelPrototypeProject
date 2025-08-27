@@ -1,5 +1,6 @@
 #pragma once
 #include "Table.h"
+#include "fstream"
 
 class TableBuilder
 {
@@ -22,5 +23,7 @@ public:
 	TableBuilder& setCell(int row, int col, Cell& cell);
 
 	Table build();
+
+	~TableBuilder();
 };
 

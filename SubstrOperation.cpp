@@ -69,3 +69,16 @@ bool SubstrOperation::hasCircularReference(const Cell& cell) const
 
     return false;
 }
+
+std::ofstream& SubstrOperation::saveToBinaryFile(std::ofstream& ofs) const
+{
+    Operation::saveToBinaryFile(ofs);
+
+    parameter->saveToBinaryFile(ofs);
+
+    ofs.write((const char*)&startIndex, sizeof(int));
+
+    ofs.write((const char*)&length, sizeof(int));
+
+    return ofs;
+}

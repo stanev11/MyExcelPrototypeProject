@@ -21,5 +21,7 @@ public:
 
 	const Value& getValue() const override;
 	MyString toString() const override;
+
+	std::ofstream& saveToBinaryFile(std::ofstream& ofs) const override;
 };
 

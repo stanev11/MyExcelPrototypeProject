@@ -4,6 +4,7 @@
 
 TableBuilder::TableBuilder()
 {
+    
 }
 
 TableBuilder& TableBuilder::setInitialTableRows(size_t count)

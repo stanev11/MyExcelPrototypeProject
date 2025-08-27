@@ -40,6 +40,21 @@ const CellType& Cell::getCellType() const
     return type;
 }
 
+std::ofstream& Cell::saveToBinaryFile(std::ofstream& ofs) const
+{
+    if (!ofs.is_open())
+    {
+        throw std::logic_error("Couldn't open file to write!");
+    }
+
+    ofs.write((const char*)&row, sizeof(row));
+    ofs.write((const char*)&col, sizeof(col));
+
+    ofs.write((const char*)&type, sizeof(int));
+
+    return ofs;
+}
+
 bool operator==(const Cell& lhs, const Cell& rhs)
 {
     return lhs.getRow() == rhs.getRow() && lhs.getCol() == rhs.getCol();

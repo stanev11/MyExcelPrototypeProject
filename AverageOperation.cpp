@@ -87,12 +87,7 @@ bool AverageOperation::hasCircularReference(const Cell& cell) const
 
 std::ofstream& AverageOperation::saveToBinaryFile(std::ofstream& ofs) const
 {
-    if (!ofs.is_open())
-    {
-        throw std::logic_error("File is not open for writing!");
-    }
-
-    ofs.write((const char*)(int)&formulaType, sizeof(int));
+    Operation::saveToBinaryFile(ofs);
 
     int size = params.getSize();
     ofs.write((const char*)&size, sizeof(int));
@@ -113,4 +108,6 @@ std::ofstream& AverageOperation::saveToBinaryFile(std::ofstream& ofs) const
             values[j].saveToBinaryFile(ofs);
         }
     }
+
+    return ofs;
 }

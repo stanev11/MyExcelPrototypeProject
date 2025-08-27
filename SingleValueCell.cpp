@@ -22,3 +22,12 @@ MyString SingleValueCell::toString() const
 {
     return value.toString();
 }
+
+std::ofstream& SingleValueCell::saveToBinaryFile(std::ofstream& ofs) const
+{
+    Cell::saveToBinaryFile(ofs);
+
+    value.saveToBinaryFile(ofs);
+
+    return ofs;
+}

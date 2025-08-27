@@ -28,3 +28,16 @@ MyString FormulaCell::toString() const
 {
 	return getValue().toString();
 }
+
+std::ofstream& FormulaCell::saveToBinaryFile(std::ofstream& ofs) const
+{
+	Cell::saveToBinaryFile(ofs);
+
+	operation->saveToBinaryFile(ofs);
+
+	ofs.write((const char*)&evaluated, sizeof(evaluated));
+
+	cachedResult.saveToBinaryFile(ofs);
+
+	return ofs;
+}

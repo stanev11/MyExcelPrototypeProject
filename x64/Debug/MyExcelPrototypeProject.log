@@ -1,6 +1,76 @@
-﻿  MyExcelPrototypeProject.cpp
+﻿  AverageOperation.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\AverageOperation.cpp(92,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\AverageOperation.cpp(103,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  AverageOperationParams.cpp
+  ConcatOperation.cpp
+  ConcatOperationParams.cpp
+  CountOperation.cpp
+  CountOperationParams.cpp
+  FactoryCell.cpp
+  FormulaCell.cpp
+  LenOperation.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\LenOperation.cpp(33,12): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  LenOperationParams.cpp
+  MaxOperation.cpp
+  MaxOperationParams.cpp
+  MinOperation.cpp
+  MinOperationParams.cpp
+  MyExcelPrototypeProject.cpp
+  Operation.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Operation.cpp(19,28): warning C4311: 'type cast': pointer truncation from 'const FormulaType *' to 'int'
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Operation.cpp(19,28): warning C4302: 'type cast': truncation from 'const FormulaType *' to 'int'
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Operation.cpp(19,15): warning C4312: 'type cast': conversion from 'int' to 'const char *' of greater size
   ProgramController.cpp
 C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ProgramController.cpp(249,7): warning C4101: 'refCol': unreferenced local variable
 C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ProgramController.cpp(248,7): warning C4101: 'refRow': unreferenced local variable
+  SubstrOperation.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\SubstrOperation.cpp(38,49): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  SubstrOperationParams.cpp
+  SumOperation.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\SumOperation.cpp(100,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\SumOperation.cpp(111,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
+  Compiling...
+  SumOperationParams.cpp
+  Table.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(8,18): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(13,18): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(59,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(69,19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(249,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Table.cpp')
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(249,13):
+      the template instantiation context (the oldest one first) is
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.h(14,31):
+          see reference to class template instantiation 'HeterogeneousContainer<Cell>' being compiled
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(238,1):
+          while compiling class template member function 'void HeterogeneousContainer<Cell>::insert(const T &,int)'
+          with
+          [
+              T=Cell
+          ]
+              C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(59,21):
+              see the first reference to 'HeterogeneousContainer<Cell>::insert' in 'Table::addCol'
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(58,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Table.cpp')
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(58,13):
+      the template instantiation context (the oldest one first) is
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(53,1):
+          while compiling class template member function 'void HeterogeneousContainer<Cell>::remove(size_t)'
+              C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(71,21):
+              see the first reference to 'HeterogeneousContainer<Cell>::remove' in 'Table::removeCell'
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(114,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Table.cpp')
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(114,13):
+      the template instantiation context (the oldest one first) is
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(103,1):
+          while compiling class template member function 'void HeterogeneousContainer<Cell>::resizeAt(size_t,size_t)'
+              C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(49,19):
+              see the first reference to 'HeterogeneousContainer<Cell>::resizeAt' in 'Table::addRow'
+  
+  ValueParameter.cpp
+  Generating Code...
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ValueParameter.cpp(30,1): warning C4715: 'ValueParameter::saveToBinaryFile': not all control paths return a value
   MyExcelPrototypeProject.vcxproj -> C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\x64\Debug\MyExcelPrototypeProject.exe

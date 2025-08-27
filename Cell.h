@@ -26,6 +26,8 @@ public:
 	void setCol(int col);
 
 	const CellType& getCellType() const;
+
+	virtual std::ofstream& saveToBinaryFile(std::ofstream& ofs) const;
 };
 
 bool operator==(const Cell& lhs, const Cell& rhs);

@@ -12,5 +12,7 @@ public:
 	Value execute() override;
 
 	bool hasCircularReference(const Cell& cell) const override;
+
+	std::ofstream& saveToBinaryFile(std::ofstream& ofs) const override;
 };
 

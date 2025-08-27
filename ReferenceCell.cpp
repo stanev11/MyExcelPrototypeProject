@@ -27,3 +27,12 @@ MyString ReferenceCell::toString() const
 {
     return to->toString();
 }
+
+std::ofstream& ReferenceCell::saveToBinaryFile(std::ofstream& ofs) const
+{
+    Cell::saveToBinaryFile(ofs);
+
+    to->saveToBinaryFile(ofs);
+
+    return ofs;
+}

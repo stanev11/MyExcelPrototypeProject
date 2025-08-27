@@ -50,3 +50,12 @@ bool LenOperation::hasCircularReference(const Cell& cell) const
     return false;
 }
 
+std::ofstream& LenOperation::saveToBinaryFile(std::ofstream& ofs) const
+{
+    Operation::saveToBinaryFile(ofs);
+
+    parameter->saveToBinaryFile(ofs);
+
+    return ofs;
+}
+

@@ -28,6 +28,6 @@ public:
 
 	FormulaType getFormulaType() const;
 
-	virtual std::ofstream& saveToBinaryFile(std::ofstream& ofs) const = 0;
+	virtual std::ofstream& saveToBinaryFile(std::ofstream& ofs) const;
 };
 

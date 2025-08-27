@@ -19,3 +19,12 @@ MyString EmptyCell::toString() const
     return MyString();
 }
 
+std::ofstream& EmptyCell::saveToBinaryFile(std::ofstream& ofs) const
+{
+    Cell::saveToBinaryFile(ofs);
+
+   // value.saveToBinaryFile(ofs); //not sure if needed (value is default)
+
+    return ofs;
+}
+

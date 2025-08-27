@@ -60,13 +60,12 @@ bool ConcatOperation::hasCircularReference(const Cell& cell) const
 
 std::ofstream& ConcatOperation::saveToBinaryFile(std::ofstream& ofs) const
 {
-	if (!ofs.is_open())
-	{
-		throw std::logic_error("Couldn't open for writing!");
-	}
+	Operation::saveToBinaryFile(ofs);
 
 	range.saveToBinaryFile(ofs);
 
+	ofs.write((const char*)&delimiter, sizeof(delimiter));
 
+	return ofs;
 }
 
