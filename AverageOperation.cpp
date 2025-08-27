@@ -98,7 +98,9 @@ std::ofstream& AverageOperation::saveToBinaryFile(std::ofstream& ofs) const
         ofs.write((const char*)&paramType, sizeof(int));
         //Again = implicit cast
 
-        MyVector<Value> values = params[i]->getValues();
+        params[i]->saveToBinaryFile(ofs);
+
+       /* MyVector<Value> values = params[i]->getValues();
 
         int valuesSize = values.getSize();
         ofs.write((const char*)&valuesSize, sizeof(int));
@@ -106,7 +108,7 @@ std::ofstream& AverageOperation::saveToBinaryFile(std::ofstream& ofs) const
         for (size_t j = 0; j < valuesSize; j++)
         {
             values[j].saveToBinaryFile(ofs);
-        }
+        }*/
     }
 
     return ofs;

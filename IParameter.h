@@ -17,6 +17,6 @@ public:
 
 	const ParameterType& getType() const; 
 
-	virtual std::ofstream& saveToBinaryFile(std::ofstream& ofs) const = 0;
+	virtual std::ofstream& saveToBinaryFile(std::ofstream& ofs) const;
 };
 

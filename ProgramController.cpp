@@ -10,6 +10,8 @@
 
 #include "FactoryCell.h"
 
+#include "ValueParameter.h"
+
 void ProgramController::saveConfigFile() const
 {
 	std::ofstream ofs(this->configFile.c_str(), std::ios::binary);
@@ -48,10 +50,22 @@ void ProgramController::saveContentFile() const
 	{
 		throw std::logic_error("Couldn't open file to write!");
 	}
-
-	//TODO
 	
+	int currentRows = currentTable.getRowsCount();
+	int currentCols = currentTable.getColsCount();
 
+	//contentFile.write((const char*)&currentRows, sizeof(currentRows));
+	//contentFile.write((const char*)&currentCols, sizeof(currentCols));
+
+	for (size_t i = 0; i < currentRows; i++)
+	{
+		for (size_t j = 0; j < currentCols; j++)
+		{
+			const Cell& currentCell = currentTable.at(i, j);
+
+			currentCell.saveToBinaryFile(contentFile);
+		}
+	}
 }
 
 TableBuilder ProgramController::createConfig(const MyString& configFile)
@@ -254,14 +268,100 @@ void ProgramController::fillTable(const MyString& contentFile)
 	}
 	else if (cellType == CellType::FormulaCell)
 	{
-		/*FormulaType formulaType;
-		ifs.read((char*)&formulaType, sizeof(int));*/
+		FormulaType formulaType;
+		ifs.read((char*)&formulaType, sizeof(int));
 		//Под въпрос дали ще работи така - имплицитно кастване
 
-		/*if (formulaType == FormulaType::SUM)
+		Operation* op;
+
+		if (formulaType == FormulaType::SUM || formulaType==FormulaType::AVERAGE)
+		{
+			int paramsSize;
+			ifs.read((char*)&paramsSize, sizeof(paramsSize));
+
+			HeterogeneousContainer<IParameter> params;
+
+			for (size_t i = 0; i < paramsSize; i++)
+			{
+				ParameterType paramType;
+				ifs.read((char*)&paramType, sizeof(int));
+
+
+				int valuesSize;
+				ifs.read((char*)&valuesSize, sizeof(valuesSize));
+
+				MyVector<Value> values;
+
+				for (size_t j = 0; j < valuesSize; j++)
+				{
+					ValueType valueType;
+					ifs.read((char*)&valueType, sizeof(valueType));
+
+					Value val;
+
+					if ((ValueType)valueType == ValueType::BOOL)
+					{
+						bool bVal;
+						ifs.read((char*)&bVal, sizeof(bool));
+
+						val.setBoolValue(bVal);
+					}
+					else if ((ValueType)valueType == ValueType::DOUBLE)
+					{
+						double dVal;
+						ifs.read((char*)&dVal, sizeof(double));
+
+						val.setDoubleValue(dVal);
+					}
+					else if ((ValueType)valueType == ValueType::INT)
+					{
+						int iVal;
+						ifs.read((char*)&iVal, sizeof(int));
+
+						val.setIntValue(iVal);
+					}
+					else if ((ValueType)valueType == ValueType::STRING)
+					{
+						int size;
+						ifs.read((char*)&size, sizeof(size));
+
+						char* str = new char[size];
+						ifs.read((char*)&str, size);
+
+						val.setStringValue(str);
+
+						delete[] str;
+					}
+
+					values.push_back(val);
+
+					if (paramType == ParameterType::ValueParameter)
+					{
+						params.addObject(new ValueParameter(val));
+					}
+					else if (paramType == ParameterType::CellParameter)
+					{
+						
+					}
+					else if (paramType == ParameterType::RangeParameter)
+					{
+
+					}
+
+
+				
+			}
+		}
+		else if (formulaType == FormulaType::MIN)
 		{
 
-		}*/
+		}
+		else if (formulaType == FormulaType::MAX)
+		{
+
+		}
+
+
 	}
 
 }

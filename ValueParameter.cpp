@@ -21,10 +21,9 @@ MyVector<Value> ValueParameter::getValues() const
 
 std::ofstream& ValueParameter::saveToBinaryFile(std::ofstream& ofs) const
 {
-	if (!ofs.is_open())
-	{
-		throw std::logic_error("Couldn't open file to write!");
-	}
+	IParameter::saveToBinaryFile(ofs);
 
 	value.saveToBinaryFile(ofs);
+
+	return ofs;
 }
