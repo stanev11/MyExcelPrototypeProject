@@ -136,6 +136,7 @@
     <ClCompile Include="ClearConsoleAfterCommand.cpp" />
     <ClCompile Include="ConcatOperation.cpp" />
     <ClCompile Include="ConcatOperationParams.cpp" />
+    <ClCompile Include="ContentFileReaderHelper.cpp" />
     <ClCompile Include="CountOperation.cpp" />
     <ClCompile Include="CountOperationParams.cpp" />
     <ClCompile Include="EmptyCell.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="ClearConsoleAfterCommand.h" />
     <ClInclude Include="ConcatOperation.h" />
     <ClInclude Include="ConcatOperationParams.h" />
+    <ClInclude Include="ContentFileReaderHelper.h" />
     <ClInclude Include="CountOperation.h" />
     <ClInclude Include="CountOperationParams.h" />
     <ClInclude Include="EmptyCell.h" />

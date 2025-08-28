@@ -7,23 +7,25 @@ class TableBuilder;
 class ProgramController
 {
 private:
-
-	MyString contentFile;
-	MyString configFile;
+	ProgramController() = default;
 
 	Table currentTable;
 	
-	void saveConfigFile() const;
-	void saveContentFile() const;
+	void saveConfigFile(const MyString& configFile) const;
+	void saveContentFile(const MyString& contentFile) const;
+
+	void saveCellsToFile(const HeterogeneousContainer<Cell>& cells, std::ofstream& ofs) const;
 
 	TableBuilder createConfig(const MyString& configFile);
 	void fillTable(const MyString& contentFile);
 
 public:
-	void openTable(const MyString& contentFile,const MyString& configFile);
+	static ProgramController getInstance();
+
+	Table& openTable(const MyString& contentFile,const MyString& configFile);
 	void createTable(const MyString& contentFile,const MyString& configFile);
 
-	void saveTable() const;
+	void saveTable(const MyString& contentFile,const MyString& configFile) const;
 
 };
 

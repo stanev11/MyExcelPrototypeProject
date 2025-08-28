@@ -24,9 +24,9 @@
 #include "MaxOperationParams.h"
 
 
-void ProgramController::saveConfigFile() const
+void ProgramController::saveConfigFile(const MyString& configFile) const
 {
-	std::ofstream ofs(this->configFile.c_str(), std::ios::binary);
+	std::ofstream ofs(configFile.c_str(), std::ios::binary);
 
 	if (!ofs.is_open())
 	{
@@ -54,11 +54,11 @@ void ProgramController::saveConfigFile() const
 	ofs.write((const char*)&clearConsole, sizeof(clearConsole));
 }
 
-void ProgramController::saveContentFile() const
+void ProgramController::saveContentFile(const MyString& contentFile) const
 {
-	std::ofstream contentFile(this->contentFile.c_str(), std::ios::binary);
+	std::ofstream file(contentFile.c_str(), std::ios::binary);
 
-	if (!contentFile.is_open())
+	if (!file.is_open())
 	{
 		throw std::logic_error("Couldn't open file to write!");
 	}
@@ -69,14 +69,41 @@ void ProgramController::saveContentFile() const
 	//contentFile.write((const char*)&currentRows, sizeof(currentRows));
 	//contentFile.write((const char*)&currentCols, sizeof(currentCols));
 
+	HeterogeneousContainer<Cell> singleValueCells;
+	HeterogeneousContainer<Cell> refCells;
+	HeterogeneousContainer<Cell> formulaCells;
+
 	for (size_t i = 0; i < currentRows; i++)
 	{
 		for (size_t j = 0; j < currentCols; j++)
 		{
 			const Cell& currentCell = currentTable.at(i, j);
+			CellType cellType = currentCell.getCellType();
 
-			currentCell.saveToBinaryFile(contentFile);
+			if (cellType == CellType::SingleValueCell)
+			{
+				singleValueCells.addObject(currentCell);
+			}
+			else if (cellType == CellType::ReferenceCell)
+			{
+				refCells.addObject(currentCell);
+			}
+			else if (cellType == CellType::FormulaCell)
+			{
+				formulaCells.addObject(currentCell);
+			}
 		}
+	}
+	saveCellsToFile(singleValueCells, file);
+	saveCellsToFile(refCells, file);
+	saveCellsToFile(formulaCells, file);
+}
+
+void ProgramController::saveCellsToFile(const HeterogeneousContainer<Cell>& cells, std::ofstream& ofs) const
+{
+	for (size_t i = 0; i < cells.getSize(); i++)
+	{
+		cells[i]->saveToBinaryFile(ofs);
 	}
 }
 
@@ -88,8 +115,6 @@ TableBuilder ProgramController::createConfig(const MyString& configFile)
 	{
 		throw std::logic_error("Couldn't open file for reading!");
 	}
-
-	this->configFile = configFile;
 
 	TableBuilder builder;
 
@@ -236,7 +261,16 @@ void ProgramController::fillTable(const MyString& contentFile)
 		int refRow;
 		int refCol;
 
+		ifs.read((char*)&refRow, sizeof(refRow));
+		ifs.read((char*)&refCol, sizeof(refCol));
+
 		//TODO - maybe init reference cell by first init *to cell
+		//may lead to mistake if we saved cells in order
+		//we should save cells by priority - first are singlevalue cells, then reference cells, than formula cells
+
+		const Cell& refCell = currentTable.at(refRow, refCol);
+
+		cell = FactoryCell::createCell(CellContext(&refCell));
 	}
 	else if (cellType == CellType::FormulaCell)
 	{
@@ -244,7 +278,7 @@ void ProgramController::fillTable(const MyString& contentFile)
 		ifs.read((char*)&formulaType, sizeof(int));
 		//Под въпрос дали ще работи така - имплицитно кастване
 
-		Operation* op;
+		Operation* op = nullptr;
 
 		if (formulaType == FormulaType::SUM || formulaType==FormulaType::AVERAGE)
 		{
@@ -306,27 +340,33 @@ void ProgramController::fillTable(const MyString& contentFile)
 
 }
 
-void ProgramController::openTable(const MyString& contentFile,const MyString& configFile)
+ProgramController ProgramController::getInstance()
+{
+	static ProgramController controller;
+
+	return controller;
+}
+
+Table& ProgramController::openTable(const MyString& contentFile,const MyString& configFile)
 {
 	TableBuilder builder = createConfig(configFile);
 
 	currentTable = builder.build();
 
+	fillTable(contentFile);
 
+	return currentTable;
 }
 
 void ProgramController::createTable(const MyString& contentFile,const MyString& configFile)
 {
-	this->configFile = configFile;
-	this->contentFile = contentFile;
-
 	TableBuilder builder;
 
 	currentTable = builder.build();
 }
 
-void ProgramController::saveTable() const
+void ProgramController::saveTable(const MyString& contentFile, const MyString& configFile) const
 {
-	saveConfigFile();
-	saveContentFile();
+	saveConfigFile(configFile);
+	saveContentFile(contentFile);
 }

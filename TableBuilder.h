@@ -23,7 +23,5 @@ public:
 	TableBuilder& setCell(int row, int col, Cell& cell);
 
 	Table build();
-
-	~TableBuilder();
 };
 

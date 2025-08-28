@@ -21,8 +21,12 @@
 #include "TableView.h"
 #include "Table.h"
 
+#include "ProgramController.h"
+
 int main()
 {
+	ProgramController controller = ProgramController::getInstance();
+
 	TableBuilder builder;
 
 	builder.setInitialTableRows(5)
