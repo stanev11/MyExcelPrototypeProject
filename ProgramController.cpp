@@ -11,6 +11,16 @@
 #include "FactoryCell.h"
 
 #include "ValueParameter.h"
+#include "RangeParameter.h"
+#include "CellParameter.h"
+
+#include "FactoryOperation.h"
+#include "SumOperationParams.h"
+#include "AverageOperationParams.h"
+
+#include "MinOperationParams.h"
+#include "MaxOperationParams.h"
+
 
 void ProgramController::saveConfigFile() const
 {
@@ -286,70 +296,99 @@ void ProgramController::fillTable(const MyString& contentFile)
 				ParameterType paramType;
 				ifs.read((char*)&paramType, sizeof(int));
 
-
-				int valuesSize;
-				ifs.read((char*)&valuesSize, sizeof(valuesSize));
-
-				MyVector<Value> values;
-
-				for (size_t j = 0; j < valuesSize; j++)
-				{
-					ValueType valueType;
-					ifs.read((char*)&valueType, sizeof(valueType));
-
-					Value val;
-
-					if ((ValueType)valueType == ValueType::BOOL)
-					{
-						bool bVal;
-						ifs.read((char*)&bVal, sizeof(bool));
-
-						val.setBoolValue(bVal);
-					}
-					else if ((ValueType)valueType == ValueType::DOUBLE)
-					{
-						double dVal;
-						ifs.read((char*)&dVal, sizeof(double));
-
-						val.setDoubleValue(dVal);
-					}
-					else if ((ValueType)valueType == ValueType::INT)
-					{
-						int iVal;
-						ifs.read((char*)&iVal, sizeof(int));
-
-						val.setIntValue(iVal);
-					}
-					else if ((ValueType)valueType == ValueType::STRING)
-					{
-						int size;
-						ifs.read((char*)&size, sizeof(size));
-
-						char* str = new char[size];
-						ifs.read((char*)&str, size);
-
-						val.setStringValue(str);
-
-						delete[] str;
-					}
-
-					values.push_back(val);
-
 					if (paramType == ParameterType::ValueParameter)
 					{
+						Value val;
+						
+						ValueType valueType;
+						ifs.read((char*)&valueType, sizeof(int));
+
+						if ((ValueType)valueType == ValueType::BOOL)
+						{
+							bool bVal;
+							ifs.read((char*)&bVal, sizeof(bool));
+
+							val.setBoolValue(bVal);
+						}
+						else if ((ValueType)valueType == ValueType::DOUBLE)
+						{
+							double dVal;
+							ifs.read((char*)&dVal, sizeof(double));
+
+							val.setDoubleValue(dVal);
+						}
+						else if ((ValueType)valueType == ValueType::INT)
+						{
+							int iVal;
+							ifs.read((char*)&iVal, sizeof(int));
+
+							val.setIntValue(iVal);
+						}
+						else if ((ValueType)valueType == ValueType::STRING)
+						{
+							int size;
+							ifs.read((char*)&size, sizeof(size));
+
+							char* str = new char[size];
+							ifs.read((char*)&str, size);
+
+							val.setStringValue(str);
+
+							delete[] str;
+						}
+
 						params.addObject(new ValueParameter(val));
 					}
 					else if (paramType == ParameterType::CellParameter)
 					{
-						
+						int row;
+						int col;
+
+						ifs.read((char*)&row, sizeof(row));
+						ifs.read((char*)&col, sizeof(col));
+
+						//adding that param may be trouble if cell param isnt initiated
+
+						Cell& cell = currentTable.at(row, col);
+
+						params.addObject(new CellParameter(&cell));
 					}
 					else if (paramType == ParameterType::RangeParameter)
 					{
+						int startRow;
+						int startCol;
 
+						ifs.read((char*)&startRow, sizeof(startRow));
+						ifs.read((char*)&startCol, sizeof(startCol));
+
+						int endRow;
+						int endCol;
+
+						ifs.read((char*)&endRow, sizeof(endRow));
+						ifs.read((char*)&endCol, sizeof(endCol));
+
+						//risky
+
+						Cell& start = currentTable.at(startRow, startCol);
+						Cell& end = currentTable.at(endRow, endCol);
+
+						params.addObject(new RangeParameter(&start, &end, &currentTable));
 					}
+			}
+			
+			if (formulaType == FormulaType::SUM)
+			{
+				SumOperationParams sumParams;
+				sumParams.params = params; //op= we can skip that
 
+				op = FactoryOperation::createOperation(sumParams);
+			}
+			else if (formulaType == FormulaType::AVERAGE)
+			{
+				AverageOprationParams avgParams;
+				avgParams.params = params;
 
-				
+				op = FactoryOperation::createOperation(avgParams);
 			}
 		}
 		else if (formulaType == FormulaType::MIN)
@@ -361,7 +400,7 @@ void ProgramController::fillTable(const MyString& contentFile)
 
 		}
 
-
+		cell = FactoryCell::createCell(CellContext(op));
 	}
 
 }
