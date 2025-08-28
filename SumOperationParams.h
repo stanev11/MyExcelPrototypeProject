@@ -7,5 +7,7 @@ struct SumOperationParams : public OperationParams
 {
 	HeterogeneousContainer<IParameter> params;
 
+	SumOperationParams(const HeterogeneousContainer<IParameter>& params);
+
 	Operation* create() const override;
 };

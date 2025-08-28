@@ -11,7 +11,9 @@
 #include "FactoryCell.h"
 
 #include "ValueParameter.h"
-#include "RangeParameter.h"
+
+#include "ContentFileReaderHelper.h"
+
 #include "CellParameter.h"
 
 #include "FactoryOperation.h"
@@ -225,48 +227,8 @@ void ProgramController::fillTable(const MyString& contentFile)
 
 	if (cellType == CellType::SingleValueCell)
 	{
-		Value val;
-
-		ValueType valueType;
-		ifs.read((char*)&valueType, sizeof(int));
-		//Под въпрос дали ще работи така - имплицитно кастване
-
-		val.setType(valueType);
-
-		if (valueType == ValueType::INT)
-		{
-			int value;
-			ifs.read((char*)&value, sizeof(value));
-
-			val.setIntValue(value);
-		}
-		else if (valueType == ValueType::DOUBLE)
-		{
-			double value;
-			ifs.read((char*)&value, sizeof(value));
-
-			val.setDoubleValue(value);
-		}
-		else if (valueType == ValueType::BOOL)
-		{
-			bool value;
-			ifs.read((char*)&value, sizeof(value));
-
-			val.setBoolValue(value);
-		}
-		else if (valueType == ValueType::STRING)
-		{
-			int len;
-			ifs.read((char*)&len, sizeof(len));
-
-			char* str = new char[len];
-			ifs.read(str, len);
-
-			val.setStringValue(str);
-
-			delete[] str;
-		}
-
+		Value val = ContentFileReaderHelper::readValue(ifs);
+		
 		cell = FactoryCell::createCell(CellContext(val));
 	}
 	else if (cellType == CellType::ReferenceCell)
@@ -298,109 +260,48 @@ void ProgramController::fillTable(const MyString& contentFile)
 
 					if (paramType == ParameterType::ValueParameter)
 					{
-						Value val;
-						
-						ValueType valueType;
-						ifs.read((char*)&valueType, sizeof(int));
-
-						if ((ValueType)valueType == ValueType::BOOL)
-						{
-							bool bVal;
-							ifs.read((char*)&bVal, sizeof(bool));
-
-							val.setBoolValue(bVal);
-						}
-						else if ((ValueType)valueType == ValueType::DOUBLE)
-						{
-							double dVal;
-							ifs.read((char*)&dVal, sizeof(double));
-
-							val.setDoubleValue(dVal);
-						}
-						else if ((ValueType)valueType == ValueType::INT)
-						{
-							int iVal;
-							ifs.read((char*)&iVal, sizeof(int));
-
-							val.setIntValue(iVal);
-						}
-						else if ((ValueType)valueType == ValueType::STRING)
-						{
-							int size;
-							ifs.read((char*)&size, sizeof(size));
-
-							char* str = new char[size];
-							ifs.read((char*)&str, size);
-
-							val.setStringValue(str);
-
-							delete[] str;
-						}
-
-						params.addObject(new ValueParameter(val));
+						params.addObject(new ValueParameter(ContentFileReaderHelper::readValue(ifs)));
 					}
 					else if (paramType == ParameterType::CellParameter)
 					{
-						int row;
-						int col;
-
-						ifs.read((char*)&row, sizeof(row));
-						ifs.read((char*)&col, sizeof(col));
-
-						//adding that param may be trouble if cell param isnt initiated
-
-						Cell& cell = currentTable.at(row, col);
-
-						params.addObject(new CellParameter(&cell));
+						params.addObject(ContentFileReaderHelper::readCellParameter(ifs,&currentTable));
 					}
 					else if (paramType == ParameterType::RangeParameter)
 					{
-						int startRow;
-						int startCol;
-
-						ifs.read((char*)&startRow, sizeof(startRow));
-						ifs.read((char*)&startCol, sizeof(startCol));
-
-						int endRow;
-						int endCol;
-
-						ifs.read((char*)&endRow, sizeof(endRow));
-						ifs.read((char*)&endCol, sizeof(endCol));
-
-						//risky
-
-						Cell& start = currentTable.at(startRow, startCol);
-						Cell& end = currentTable.at(endRow, endCol);
-
-						params.addObject(new RangeParameter(&start, &end, &currentTable));
+						params.addObject(ContentFileReaderHelper::readRangeParameter(ifs,&currentTable));
 					}
 			}
 			
 			if (formulaType == FormulaType::SUM)
 			{
-				SumOperationParams sumParams;
-				sumParams.params = params; //op= we can skip that
+				SumOperationParams sumParams(params);
 
 				op = FactoryOperation::createOperation(sumParams);
 			}
 			else if (formulaType == FormulaType::AVERAGE)
 			{
-				AverageOprationParams avgParams;
-				avgParams.params = params;
+				AverageOprationParams avgParams(params);
 
 				op = FactoryOperation::createOperation(avgParams);
 			}
 		}
 		else if (formulaType == FormulaType::MIN)
 		{
+			MinOperationParams minParams(ContentFileReaderHelper::readRangeParameter(ifs,&currentTable));
 
+			op = FactoryOperation::createOperation(minParams);
 		}
 		else if (formulaType == FormulaType::MAX)
 		{
+			MaxOperationParams maxParams(ContentFileReaderHelper::readRangeParameter(ifs,&currentTable));
 
+			op = FactoryOperation::createOperation(maxParams);
 		}
 
 		cell = FactoryCell::createCell(CellContext(op));
+
+		//may not work? - TBD
+		currentTable.setCell(row, col, cell);
 	}
 
 }
