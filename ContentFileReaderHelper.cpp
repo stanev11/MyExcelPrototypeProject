@@ -58,8 +58,9 @@ Value ContentFileReaderHelper::readValue(std::ifstream& ifs)
 		int size;
 		ifs.read((char*)&size, sizeof(size));
 
-		char* str = new char[size];
+		char* str = new char[size+1];
 		ifs.read(str, size);
+		str[size] = '\0';
 
 		val.setStringValue(str);
 

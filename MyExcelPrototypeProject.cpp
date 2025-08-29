@@ -62,7 +62,9 @@ int main()
 
 	//table.setCell(1, 3,EmptyCell());
 
-   Table& table = controller.openTable("contentFile.txt", "configFile.txt");
+	Table& table = controller.openTable("contentFile.txt", "configFile.txt");
+
+//    table.insertAt(3, 2, Value(MyString("Iva")));
 
 	TableView view(table);
 	view.render();

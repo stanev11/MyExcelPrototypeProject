@@ -108,17 +108,6 @@ Cell& Table::at(int row,int col)
     return *cells[(row - 1) * cols + (col - 1)];
 }
 
-//void Table::setCell(int row, int col, Cell* cell)
-//{
-//    if (!isValidPosition(row, col))
-//    {
-//        //TODO
-//    }
-//    Cell& current = at(row, col);
-//    current = *cell;
-//    std::cout<<current.toString();
-//}
-
 void Table::setCell(int row, int col, const Cell& cell)
 {
     if (!isValidPosition(row, col))
@@ -169,6 +158,9 @@ void Table::insertAt(int row, int col, const CellContext& ctx)
 
     Cell* newCell = FactoryCell::createCell(ctx);
 
+    newCell->setRow(row);
+    newCell->setCol(col);
+
     setCell(row, col, *newCell);
 }
 
@@ -176,6 +168,7 @@ void Table::insertAt(int row, int col, const Value& value)
 {
     CellContext ctx;
     ctx.value = value;
+    ctx.type = CellType::SingleValueCell;
 
     insertAt(row, col, ctx);
 }
