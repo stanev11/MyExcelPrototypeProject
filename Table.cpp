@@ -108,15 +108,16 @@ Cell& Table::at(int row,int col)
     return *cells[(row - 1) * cols + (col - 1)];
 }
 
-void Table::setCell(int row, int col, Cell* cell)
-{
-    if (!isValidPosition(row, col))
-    {
-        //TODO
-    }
-
-    at(row, col) = *cell;
-}
+//void Table::setCell(int row, int col, Cell* cell)
+//{
+//    if (!isValidPosition(row, col))
+//    {
+//        //TODO
+//    }
+//    Cell& current = at(row, col);
+//    current = *cell;
+//    std::cout<<current.toString();
+//}
 
 void Table::setCell(int row, int col, const Cell& cell)
 {

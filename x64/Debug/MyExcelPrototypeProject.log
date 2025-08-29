@@ -1,6 +1,2 @@
 ﻿  MyExcelPrototypeProject.cpp
-  ProgramController.cpp
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ProgramController.cpp(80,49): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ProgramController.cpp(80,46): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
   MyExcelPrototypeProject.vcxproj -> C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\x64\Debug\MyExcelPrototypeProject.exe

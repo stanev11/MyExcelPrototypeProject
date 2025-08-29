@@ -27,5 +27,7 @@ public:
 
 	void saveTable(const MyString& contentFile,const MyString& configFile) const;
 
+	void setCurrentTable(Table& table);
+
 };
 

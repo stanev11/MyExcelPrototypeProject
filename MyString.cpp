@@ -59,7 +59,9 @@ std::ofstream& MyString::saveToBinaryFile(std::ofstream& ofs) const
     }
 
     ofs.write((const char*)&currentSize, sizeof(int));
-    ofs.write((const char*)&data, currentSize);
+    ofs.write(data, currentSize);
+
+    return ofs;
 }
 
 MyString::MyString(size_t stringLength)

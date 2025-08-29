@@ -72,10 +72,11 @@ void ProgramController::saveContentFile(const MyString& contentFile) const
 	HeterogeneousContainer<Cell> singleValueCells;
 	HeterogeneousContainer<Cell> refCells;
 	HeterogeneousContainer<Cell> formulaCells;
+	int count = 0;
 
-	for (size_t i = 0; i < currentRows; i++)
+	for (size_t i = 1; i <= currentRows; i++)
 	{
-		for (size_t j = 0; j < currentCols; j++)
+		for (size_t j = 1; j <= currentCols; j++)
 		{
 			const Cell& currentCell = currentTable.at(i, j);
 			CellType cellType = currentCell.getCellType();
@@ -83,17 +84,23 @@ void ProgramController::saveContentFile(const MyString& contentFile) const
 			if (cellType == CellType::SingleValueCell)
 			{
 				singleValueCells.addObject(currentCell);
+				count++;
 			}
 			else if (cellType == CellType::ReferenceCell)
 			{
 				refCells.addObject(currentCell);
+				count++;
 			}
 			else if (cellType == CellType::FormulaCell)
 			{
 				formulaCells.addObject(currentCell);
+				count++;
 			}
 		}
 	}
+
+	file.write((const char*)&count, sizeof(count));
+
 	saveCellsToFile(singleValueCells, file);
 	saveCellsToFile(refCells, file);
 	saveCellsToFile(formulaCells, file);
@@ -237,60 +244,75 @@ void ProgramController::fillTable(const MyString& contentFile)
 	{
 		throw std::logic_error("Couldn't open file to read!");
 	}
+	
+	int countOfCells;
+	ifs.read((char*)&countOfCells, sizeof(countOfCells));
 
-	int row;
-	int col;
-
-	ifs.read((char*)&row, sizeof(row));
-	ifs.read((char*)&col, sizeof(col));
-
-	CellType cellType;
-	ifs.read((char*)&cellType, sizeof(int));
-	//Под въпрос дали ще работи така - имплицитно кастване
-
-	Cell* cell;
-
-	if (cellType == CellType::SingleValueCell)
+	for (size_t i = 0; i < countOfCells; i++)
 	{
-		Value val = ContentFileReaderHelper::readValue(ifs);
-		
-		cell = FactoryCell::createCell(CellContext(val));
-	}
-	else if (cellType == CellType::ReferenceCell)
-	{
-		int refRow;
-		int refCol;
+		int row;
+		int col;
 
-		ifs.read((char*)&refRow, sizeof(refRow));
-		ifs.read((char*)&refCol, sizeof(refCol));
+		ifs.read((char*)&row, sizeof(row));
+		ifs.read((char*)&col, sizeof(col));
 
-		//TODO - maybe init reference cell by first init *to cell
-		//may lead to mistake if we saved cells in order
-		//we should save cells by priority - first are singlevalue cells, then reference cells, than formula cells
-
-		const Cell& refCell = currentTable.at(refRow, refCol);
-
-		cell = FactoryCell::createCell(CellContext(&refCell));
-	}
-	else if (cellType == CellType::FormulaCell)
-	{
-		FormulaType formulaType;
-		ifs.read((char*)&formulaType, sizeof(int));
+		CellType cellType;
+		ifs.read((char*)&cellType, sizeof(int));
 		//Под въпрос дали ще работи така - имплицитно кастване
 
-		Operation* op = nullptr;
+		Cell* cell = nullptr;
 
-		if (formulaType == FormulaType::SUM || formulaType==FormulaType::AVERAGE)
+		if (cellType == CellType::SingleValueCell)
 		{
-			int paramsSize;
-			ifs.read((char*)&paramsSize, sizeof(paramsSize));
+			Value val = ContentFileReaderHelper::readValue(ifs);
 
-			HeterogeneousContainer<IParameter> params;
+			cell = FactoryCell::createCell(CellContext(val));
 
-			for (size_t i = 0; i < paramsSize; i++)
+			cell->setRow(row);
+			cell->setCol(col);
+
+			currentTable.setCell(row, col, *cell);
+		}
+		else if (cellType == CellType::ReferenceCell)
+		{
+			int refRow;
+			int refCol;
+
+			ifs.read((char*)&refRow, sizeof(refRow));
+			ifs.read((char*)&refCol, sizeof(refCol));
+
+			//TODO - maybe init reference cell by first init *to cell
+			//may lead to mistake if we saved cells in order
+			//we should save cells by priority - first are singlevalue cells, then reference cells, than formula cells
+
+			const Cell& refCell = currentTable.at(refRow, refCol);
+
+			cell = FactoryCell::createCell(CellContext(&refCell));
+
+			cell->setRow(row);
+			cell->setCol(col);
+
+			currentTable.setCell(row, col, *cell);
+		}
+		else if (cellType == CellType::FormulaCell)
+		{
+			FormulaType formulaType;
+			ifs.read((char*)&formulaType, sizeof(int));
+			//Под въпрос дали ще работи така - имплицитно кастване
+
+			Operation* op = nullptr;
+
+			if (formulaType == FormulaType::SUM || formulaType == FormulaType::AVERAGE)
 			{
-				ParameterType paramType;
-				ifs.read((char*)&paramType, sizeof(int));
+				int paramsSize;
+				ifs.read((char*)&paramsSize, sizeof(paramsSize));
+
+				HeterogeneousContainer<IParameter> params;
+
+				for (size_t i = 0; i < paramsSize; i++)
+				{
+					ParameterType paramType;
+					ifs.read((char*)&paramType, sizeof(int));
 
 					if (paramType == ParameterType::ValueParameter)
 					{
@@ -298,46 +320,48 @@ void ProgramController::fillTable(const MyString& contentFile)
 					}
 					else if (paramType == ParameterType::CellParameter)
 					{
-						params.addObject(ContentFileReaderHelper::readCellParameter(ifs,&currentTable));
+						params.addObject(ContentFileReaderHelper::readCellParameter(ifs, &currentTable));
 					}
 					else if (paramType == ParameterType::RangeParameter)
 					{
-						params.addObject(ContentFileReaderHelper::readRangeParameter(ifs,&currentTable));
+						params.addObject(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable));
 					}
+				}
+
+				if (formulaType == FormulaType::SUM)
+				{
+					SumOperationParams sumParams(params);
+
+					op = FactoryOperation::createOperation(sumParams);
+				}
+				else if (formulaType == FormulaType::AVERAGE)
+				{
+					AverageOprationParams avgParams(params);
+
+					op = FactoryOperation::createOperation(avgParams);
+				}
 			}
-			
-			if (formulaType == FormulaType::SUM)
+			else if (formulaType == FormulaType::MIN)
 			{
-				SumOperationParams sumParams(params);
+				MinOperationParams minParams(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable));
 
-				op = FactoryOperation::createOperation(sumParams);
+				op = FactoryOperation::createOperation(minParams);
 			}
-			else if (formulaType == FormulaType::AVERAGE)
+			else if (formulaType == FormulaType::MAX)
 			{
-				AverageOprationParams avgParams(params);
+				MaxOperationParams maxParams(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable));
 
-				op = FactoryOperation::createOperation(avgParams);
+				op = FactoryOperation::createOperation(maxParams);
 			}
+
+			cell = FactoryCell::createCell(CellContext(op));
+
+			cell->setRow(row);
+			cell->setCol(col);
+
+			currentTable.setCell(row, col, *cell);
 		}
-		else if (formulaType == FormulaType::MIN)
-		{
-			MinOperationParams minParams(ContentFileReaderHelper::readRangeParameter(ifs,&currentTable));
-
-			op = FactoryOperation::createOperation(minParams);
-		}
-		else if (formulaType == FormulaType::MAX)
-		{
-			MaxOperationParams maxParams(ContentFileReaderHelper::readRangeParameter(ifs,&currentTable));
-
-			op = FactoryOperation::createOperation(maxParams);
-		}
-
-		cell = FactoryCell::createCell(CellContext(op));
-
-		//may not work? - TBD
-		currentTable.setCell(row, col, cell);
 	}
-
 }
 
 ProgramController ProgramController::getInstance()
@@ -369,4 +393,9 @@ void ProgramController::saveTable(const MyString& contentFile, const MyString& c
 {
 	saveConfigFile(configFile);
 	saveContentFile(contentFile);
+}
+
+void ProgramController::setCurrentTable(Table& table)
+{
+	currentTable = table;
 }

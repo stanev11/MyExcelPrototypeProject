@@ -35,7 +35,7 @@ public:
 	const Cell& at(int row,int col) const;
 	Cell& at(int row,int col);
 
-	void setCell(int row, int col, Cell* cell);
+	//void setCell(int row, int col, Cell* cell);
 	void setCell(int row, int col, const Cell& cell);
 
 	void insertAt(int row, int col,const Cell& cell);

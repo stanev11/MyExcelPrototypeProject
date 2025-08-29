@@ -30,6 +30,8 @@ Value ContentFileReaderHelper::readValue(std::ifstream& ifs)
 	ValueType valueType;
 	ifs.read((char*)&valueType, sizeof(int));
 
+	val.setType(valueType);
+
 	if ((ValueType)valueType == ValueType::BOOL)
 	{
 		bool bVal;
@@ -57,7 +59,7 @@ Value ContentFileReaderHelper::readValue(std::ifstream& ifs)
 		ifs.read((char*)&size, sizeof(size));
 
 		char* str = new char[size];
-		ifs.read((char*)&str, size);
+		ifs.read(str, size);
 
 		val.setStringValue(str);
 
