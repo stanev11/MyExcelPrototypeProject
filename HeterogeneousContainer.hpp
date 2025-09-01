@@ -167,11 +167,11 @@ void HeterogeneousContainer<T>::moveFrom(HeterogeneousContainer&& other) noexcep
 template<class T>
 void HeterogeneousContainer<T>::free()
 {
-	for (int i = 0; i < size; i++)
+	/*for (int i = 0; i < size; i++)
 	{
 		delete objects[i];
 	}
-	delete[] objects;
+	delete[] objects;*/
 }
 
 template<class T>

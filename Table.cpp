@@ -72,7 +72,7 @@ void Table::removeCell(const Cell& cell)
     }
     catch (const std::exception&)
     {
-
+        //TODO
     }
 }
 
@@ -108,28 +108,54 @@ Cell& Table::at(int row,int col)
     return *cells[(row - 1) * cols + (col - 1)];
 }
 
-void Table::setCell(int row, int col, const Cell& cell)
+void Table::setCell(int row, int col, Cell* cell)
 {
     if (!isValidPosition(row, col))
     {
         //TODO
     }
 
-    cells[(row - 1) * cols + (col - 1)] = cell.clone();
+    int index = (row - 1) * cols + (col - 1);
+
+    cells[index]->transferRefCells(cell);
+
+    cells[index] = cell;
 }
 
-void Table::insertAt(int row, int col,const Cell& cell)
-{
-    if (!isValidPosition(row, col))
-    {
-        //TODO
-    }
+//void Table::setCell(int row, int col, const Cell& cell)
+//{
+//    if (!isValidPosition(row, col))
+//    {
+//        //TODO
+//    }
+//
+//    int index = (row - 1) * cols + (col - 1);
+//
+//    std::cout << cells[index] << "\n";
+//
+//    cells[index] = cell.clone();
+//
+//    std::cout << cells[index] << "\n";
+//
+//    cells[index]->updateRefCells();
+//}
 
-    cells[(row - 1) * cols + (col - 1)] = cell.clone();
-
-    cells[(row - 1) * cols + (col - 1)]->setRow(row);
-    cells[(row - 1) * cols + (col - 1)]->setCol(col);
-}
+//void Table::insertAt(int row, int col,const Cell& cell)
+//{
+//    if (!isValidPosition(row, col))
+//    {
+//        //TODO
+//    }
+//
+//    int index = (row - 1) * cols + (col - 1);
+//
+//    cells[index] = cell.clone();
+//
+//    cells[index]->setRow(row);
+//    cells[index]->setCol(col);
+//
+//    cells[index]->updateRefCells();
+//}
 
 void Table::insertAt(int row, int col, Cell* cell)
 {
@@ -146,7 +172,11 @@ void Table::insertAt(int row, int col, Cell* cell)
     cell->setRow(row);
     cell->setCol(col);
 
-    cells[(row-1) * cols + (col-1)] = cell;
+    int index = (row - 1) * cols + (col - 1);
+
+    cells[index]->transferRefCells(cell);
+
+    cells[index] = cell;
 }
 
 void Table::insertAt(int row, int col, const CellContext& ctx)
@@ -161,7 +191,7 @@ void Table::insertAt(int row, int col, const CellContext& ctx)
     newCell->setRow(row);
     newCell->setCol(col);
 
-    setCell(row, col, *newCell);
+    setCell(row, col, newCell);
 }
 
 void Table::insertAt(int row, int col, const Value& value)
@@ -197,6 +227,6 @@ void Table::deleteAt(int row, int col)
 
     Cell& cell = at(row, col);
 
-    setCell(row, col, EmptyCell());
+    setCell(row, col,new EmptyCell());
 }
 

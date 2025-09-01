@@ -16,5 +16,7 @@ public:
 	MyString toString() const override;
 
 	std::ofstream& saveToBinaryFile(std::ofstream& ofs) const override;
+
+	void setRef(Cell* to);
 };
 

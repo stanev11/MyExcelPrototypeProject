@@ -4,8 +4,12 @@ ReferenceCell::ReferenceCell() : ReferenceCell(nullptr)
 {
 }
 
-ReferenceCell::ReferenceCell(Cell* to) : to(to), Cell(CellType::ReferenceCell)
+ReferenceCell::ReferenceCell(Cell* to) : Cell(CellType::ReferenceCell)
 {
+    if (to)
+    {
+        setRef(to);
+    }
 }
 
 Cell* ReferenceCell::clone() const
@@ -35,4 +39,13 @@ std::ofstream& ReferenceCell::saveToBinaryFile(std::ofstream& ofs) const
     to->saveToBinaryFile(ofs);
 
     return ofs;
+}
+
+void ReferenceCell::setRef(Cell* to)
+{
+    if (to)
+    {
+        this->to = to;
+        to->addRefCell(this);
+    }
 }

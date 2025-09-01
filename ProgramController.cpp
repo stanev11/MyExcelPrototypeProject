@@ -270,8 +270,8 @@ void ProgramController::fillTable(const MyString& contentFile)
 
 			cell->setRow(row);
 			cell->setCol(col);
-
-			currentTable.setCell(row, col, *cell);
+			
+			currentTable.setCell(row, col, cell);
 		}
 		else if (cellType == CellType::ReferenceCell)
 		{
@@ -285,14 +285,18 @@ void ProgramController::fillTable(const MyString& contentFile)
 			//may lead to mistake if we saved cells in order
 			//we should save cells by priority - first are singlevalue cells, then reference cells, than formula cells
 
-			const Cell& refCell = currentTable.at(refRow, refCol);
+			Cell& refCell = currentTable.at(refRow, refCol);
 
-			cell = FactoryCell::createCell(CellContext(&refCell));
+			CellContext ctx;
+			ctx.type = CellType::ReferenceCell;
+			ctx.reference = &refCell;
+
+			cell = FactoryCell::createCell(ctx);
 
 			cell->setRow(row);
 			cell->setCol(col);
 
-			currentTable.setCell(row, col, *cell);
+			currentTable.setCell(row, col, cell);
 		}
 		else if (cellType == CellType::FormulaCell)
 		{
@@ -359,7 +363,7 @@ void ProgramController::fillTable(const MyString& contentFile)
 			cell->setRow(row);
 			cell->setCol(col);
 
-			currentTable.setCell(row, col, *cell);
+			currentTable.setCell(row, col, cell);
 		}
 	}
 }

@@ -1,14 +1,16 @@
 #pragma once
 #include "Value.h"
 #include "CellType.h"
+#include "HeterogeneousContainer.hpp"
+
 class Cell
 {
 private:
-	int row;
-	int col;
+	int row = 0;
+	int col = 0;
 
 	CellType type;
-
+	HeterogeneousContainer<Cell> refCells;
 public:
 	Cell(CellType type);
 
@@ -28,6 +30,11 @@ public:
 	const CellType& getCellType() const;
 
 	virtual std::ofstream& saveToBinaryFile(std::ofstream& ofs) const;
+
+	void addRefCell(Cell* cell);
+	//void updateRefCells();
+
+	void transferRefCells(Cell* newCell);
 };
 
 bool operator==(const Cell& lhs, const Cell& rhs);

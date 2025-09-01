@@ -1,6 +1,8 @@
 #pragma once
 #include "Cell.h"
 
+#include "ReferenceCell.h"
+
 Cell::Cell(CellType type) : type(type)
 {
 }
@@ -53,6 +55,39 @@ std::ofstream& Cell::saveToBinaryFile(std::ofstream& ofs) const
     ofs.write((const char*)&type, sizeof(int));
 
     return ofs;
+}
+
+void Cell::addRefCell(Cell* cell)
+{
+    if (cell)
+    {
+        refCells.addObject(cell);
+    }
+}
+
+//void Cell::updateRefCells()
+//{
+//    for (size_t i = 0; i < refCells.getSize(); i++)
+//    {
+//        refCells[i]->updateRefCells();
+//
+//        if (refCells[i]->getCellType() == CellType::ReferenceCell)
+//        {
+//            ReferenceCell* ref = dynamic_cast<ReferenceCell*>(refCells[i]);
+//            ref->setRef(this);
+//        }
+//    }
+//}
+
+void Cell::transferRefCells(Cell* newCell)
+{
+    if (newCell)
+    {
+        for (size_t i = 0; i < refCells.getSize(); i++)
+        {
+            dynamic_cast<ReferenceCell*>(refCells[i])->setRef(newCell);
+        }
+    }
 }
 
 bool operator==(const Cell& lhs, const Cell& rhs)
