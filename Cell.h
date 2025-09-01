@@ -6,8 +6,8 @@
 class Cell
 {
 private:
-	int row = 0;
-	int col = 0;
+	int row;
+	int col;
 
 	CellType type;
 	HeterogeneousContainer<Cell> refCells;

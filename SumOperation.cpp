@@ -102,21 +102,7 @@ std::ofstream& SumOperation::saveToBinaryFile(std::ofstream& ofs) const
 
     for (size_t i = 0; i < size; i++)
     {
-        ParameterType paramType = params[i]->getType();
-        ofs.write((const char*)&paramType, sizeof(int));
-        //Again = implicit cast
-
         params[i]->saveToBinaryFile(ofs);
-
-        /*MyVector<Value> values = params[i]->getValues();
-
-        int valuesSize = values.getSize();
-        ofs.write((const char*)&valuesSize, sizeof(int));
-
-        for (size_t j = 0; j < valuesSize; j++)
-        {
-            values[j].saveToBinaryFile(ofs);
-        }*/
     }
 
     return ofs;

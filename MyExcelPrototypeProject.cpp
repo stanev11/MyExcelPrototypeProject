@@ -70,11 +70,22 @@ int main()
 
 	//table.insertAt(2, 3,MyString("What?"));
 
+	//SumOperationParams params;
+	//params.params.addObject(new CellParameter(&table.at(1, 1)));
+
+	//params.params.addObject(new ValueParameter(12));
+
+	//params.params.addObject(new CellParameter(&table.at(1, 2)));
+
+	//table.insertAt(4, 2, FactoryCell::createCell(params.create()));
+
 	TableView view(table);
 	view.render();
 
 	controller.setCurrentTable(table);
 
 	controller.saveTable("contentFile.txt", "configFile.txt");
+
+	Cell* c = new ReferenceCell();
 }
 

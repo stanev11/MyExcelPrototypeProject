@@ -1,2 +1,7 @@
-﻿  MyExcelPrototypeProject.cpp
+﻿  AverageOperation.cpp
+  MyExcelPrototypeProject.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\AverageOperation.cpp(92,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  SumOperation.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\SumOperation.cpp(100,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
   MyExcelPrototypeProject.vcxproj -> C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\x64\Debug\MyExcelPrototypeProject.exe

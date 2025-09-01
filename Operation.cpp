@@ -16,7 +16,7 @@ std::ofstream& Operation::saveToBinaryFile(std::ofstream& ofs) const
         throw std::logic_error("File is not open for writing!");
     }
 
-    ofs.write((const char*)(int)&formulaType, sizeof(int));
+    ofs.write((const char*)&formulaType, sizeof(int));
 
     return ofs;
 }
