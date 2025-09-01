@@ -77,7 +77,27 @@ int main()
 
 	//params.params.addObject(new CellParameter(&table.at(1, 2)));
 
+	//params.params.addObject(new ValueParameter(MyString("Hello")));
+
 	//table.insertAt(4, 2, FactoryCell::createCell(params.create()));
+
+	/*AverageOprationParams avgParams;
+	avgParams.params.addObject(new ValueParameter(12));
+	avgParams.params.addObject(ValueParameter(25));
+
+	table.insertAt(4, 3, FactoryCell::createCell(avgParams.create()));*/
+
+	/*RangeParameter range(&table.at(1, 1), &table.at(3, 3), &table);
+	MinOperationParams minParams(range);
+	table.insertAt(5, 4, FactoryCell::createCell(minParams.create()));*/
+
+
+	/*SubstrOperationParams substrParams;
+	substrParams.parameter = new CellParameter(&table.at(1, 4));
+	substrParams.length = 2;
+	substrParams.startIndex = 2;
+
+	table.insertAt(5, 5, FactoryCell::createCell(substrParams.create()));*/
 
 	TableView view(table);
 	view.render();
@@ -85,7 +105,5 @@ int main()
 	controller.setCurrentTable(table);
 
 	controller.saveTable("contentFile.txt", "configFile.txt");
-
-	Cell* c = new ReferenceCell();
 }
 

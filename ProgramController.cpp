@@ -19,6 +19,7 @@
 #include "FactoryOperation.h"
 #include "SumOperationParams.h"
 #include "AverageOperationParams.h"
+#include "SubstrOperationParams.h"
 
 #include "MinOperationParams.h"
 #include "MaxOperationParams.h"
@@ -356,6 +357,11 @@ void ProgramController::fillTable(const MyString& contentFile)
 				MaxOperationParams maxParams(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable));
 
 				op = FactoryOperation::createOperation(maxParams);
+			}
+			else if (formulaType == FormulaType::SUBSTR)
+			{
+				SubstrOperationParams substrParams;
+				//TODO
 			}
 
 			cell = FactoryCell::createCell(CellContext(op));

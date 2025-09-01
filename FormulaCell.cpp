@@ -35,9 +35,12 @@ std::ofstream& FormulaCell::saveToBinaryFile(std::ofstream& ofs) const
 
 	operation->saveToBinaryFile(ofs);
 
-	ofs.write((const char*)&evaluated, sizeof(evaluated));
+	/*ofs.write((const char*)&evaluated, sizeof(evaluated));
 
-	cachedResult.saveToBinaryFile(ofs);
+	if (evaluated)
+	{
+		cachedResult.saveToBinaryFile(ofs);
+	}*/
 
 	return ofs;
 }

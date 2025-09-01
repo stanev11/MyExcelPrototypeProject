@@ -4,6 +4,8 @@
 
 struct MinOperationParams : public OperationParams
 {
+	MinOperationParams() = default;
+
 	MinOperationParams(const RangeParameter& range);
 
 	RangeParameter range;
