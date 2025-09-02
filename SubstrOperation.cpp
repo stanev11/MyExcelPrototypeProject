@@ -19,6 +19,7 @@ Operation* SubstrOperation::clone() const
 
 Value SubstrOperation::execute()
 {
+    parameter->getType();
     const MyVector<Value>& values = parameter->getValues();
 
     Value v;

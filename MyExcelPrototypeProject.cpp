@@ -47,7 +47,7 @@ int main()
 	//table.insertAt(2, 3, cell3);
 	//table.insertAt(1, 4, MyString("abcde"));
 
-	////table.deleteAt(3, 1); - NOT WORKING
+	//table.deleteAt(3, 1); - NOT WORKING
 
 
 	//AverageOprationParams par;
@@ -64,11 +64,11 @@ int main()
 
 	Table& table = controller.openTable("contentFile.txt", "configFile.txt");
 
-//    table.insertAt(3, 2, Value(MyString("Iva")));
+  /*  table.insertAt(3, 2, Value(MyString("Iva")));
 
-	//table.insertAt(4, 1, new ReferenceCell(&table.at(2,3)));
+	table.insertAt(4, 1, new ReferenceCell(&table.at(2,3)));
 
-	//table.insertAt(2, 3,MyString("What?"));
+	table.insertAt(2, 3,MyString("What?"));*/
 
 	//SumOperationParams params;
 	//params.params.addObject(new CellParameter(&table.at(1, 1)));
@@ -81,23 +81,24 @@ int main()
 
 	//table.insertAt(4, 2, FactoryCell::createCell(params.create()));
 
-	/*AverageOprationParams avgParams;
-	avgParams.params.addObject(new ValueParameter(12));
-	avgParams.params.addObject(ValueParameter(25));
+	//AverageOprationParams avgParams;
+	//avgParams.params.addObject(new ValueParameter(12));
+	//avgParams.params.addObject(ValueParameter(25));
 
-	table.insertAt(4, 3, FactoryCell::createCell(avgParams.create()));*/
+	//table.insertAt(4, 3, FactoryCell::createCell(avgParams.create()));
 
-	/*RangeParameter range(&table.at(1, 1), &table.at(3, 3), &table);
-	MinOperationParams minParams(range);
-	table.insertAt(5, 4, FactoryCell::createCell(minParams.create()));*/
+	//Cell& c = table.at(3, 3);
 
+	//RangeParameter range(&table.at(1, 1), &table.at(3, 2), &table);
+	//MaxOperationParams maxParams(range);
+	//table.insertAt(5, 4, FactoryCell::createCell(maxParams.create()));
 
-	/*SubstrOperationParams substrParams;
-	substrParams.parameter = new CellParameter(&table.at(1, 4));
-	substrParams.length = 2;
-	substrParams.startIndex = 2;
+	//SubstrOperationParams substrParams;
+	//substrParams.parameter = new CellParameter(&table.at(1, 4));
+	//substrParams.length = 2;
+	//substrParams.startIndex = 0;
 
-	table.insertAt(5, 5, FactoryCell::createCell(substrParams.create()));*/
+	//table.insertAt(5, 5, FactoryCell::createCell(substrParams.create()));
 
 	TableView view(table);
 	view.render();

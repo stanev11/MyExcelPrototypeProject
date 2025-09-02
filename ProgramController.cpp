@@ -97,6 +97,7 @@ void ProgramController::saveContentFile(const MyString& contentFile) const
 				formulaCells.addObject(currentCell);
 				count++;
 			}
+			//DO I NEED TO SAVE EMPTY CELLS TOO?
 		}
 	}
 
@@ -321,7 +322,7 @@ void ProgramController::fillTable(const MyString& contentFile)
 
 					if (paramType == ParameterType::ValueParameter)
 					{
-						params.addObject(new ValueParameter(ContentFileReaderHelper::readValue(ifs)));
+						params.addObject(ValueParameter(ContentFileReaderHelper::readValue(ifs)));
 					}
 					else if (paramType == ParameterType::CellParameter)
 					{
@@ -348,20 +349,65 @@ void ProgramController::fillTable(const MyString& contentFile)
 			}
 			else if (formulaType == FormulaType::MIN)
 			{
-				MinOperationParams minParams(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable));
+				ParameterType paramType;
+				ifs.read((char*)&paramType, sizeof(int));
 
-				op = FactoryOperation::createOperation(minParams);
+				if (paramType == ParameterType::RangeParameter)
+				{
+					MinOperationParams minParams(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable));
+
+					op = FactoryOperation::createOperation(minParams);
+				}
+
+				//ELSE ERROR IN READING DATA - #VALUE = TODO
 			}
 			else if (formulaType == FormulaType::MAX)
 			{
-				MaxOperationParams maxParams(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable));
+				ParameterType paramType;
+				ifs.read((char*)&paramType, sizeof(int));
 
-				op = FactoryOperation::createOperation(maxParams);
+				if (paramType == ParameterType::RangeParameter)
+				{
+					MaxOperationParams maxParams(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable));
+
+					op = FactoryOperation::createOperation(maxParams);
+				}
+
+				//ELSE ERROR IN READING DATA - #VALUE = TODO
 			}
 			else if (formulaType == FormulaType::SUBSTR)
 			{
+				ParameterType paramType;
+				ifs.read((char*)&paramType, sizeof(int));
+
+				IParameter* param = nullptr;
+
+				if (paramType == ParameterType::ValueParameter)
+				{
+					param = new ValueParameter(ContentFileReaderHelper::readValue(ifs));
+				}
+				else if (paramType == ParameterType::CellParameter)
+				{
+					param = new CellParameter(ContentFileReaderHelper::readCellParameter(ifs, &currentTable));
+				}
+				else if (paramType == ParameterType::RangeParameter)
+				{
+					 param = new RangeParameter(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable));
+				}
+
 				SubstrOperationParams substrParams;
-				//TODO
+
+				substrParams.parameter = param;
+				
+				int startIndex;
+				ifs.read((char*)&startIndex, sizeof(int));
+				substrParams.startIndex = startIndex;
+
+				int len;
+				ifs.read((char*)&len, sizeof(int));
+				substrParams.length = len;
+
+				op = FactoryOperation::createOperation(substrParams);
 			}
 
 			cell = FactoryCell::createCell(CellContext(op));
@@ -371,7 +417,10 @@ void ProgramController::fillTable(const MyString& contentFile)
 
 			currentTable.setCell(row, col, cell);
 		}
+
 	}
+
+	currentTable.setEmptyCells();
 }
 
 ProgramController ProgramController::getInstance()

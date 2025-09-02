@@ -17,6 +17,7 @@ private:
 public:
 	void setInitialRows(size_t count);
 	void setInitialCols(size_t count);
+	void setEmptyCells();
 
 	int getRowsCount() const;
 	int getColsCount() const;

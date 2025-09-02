@@ -13,6 +13,23 @@ void Table::setInitialCols(size_t count)
     this->cols = count;
 }
 
+void Table::setEmptyCells()
+{
+    for (size_t i = 1; i <= rows; i++)
+    {
+        for (size_t j = 1; j <= cols; j++)
+        {
+            Cell& current = at(i, j);
+
+            if (current.getCellType() == CellType::Empty)
+            {
+                current.setRow(i);
+                current.setCol(j);
+            }
+        }
+    }
+}
+
 int Table::getRowsCount() const
 {
     return rows;

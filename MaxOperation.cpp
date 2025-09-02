@@ -13,7 +13,7 @@ Operation* MaxOperation::clone() const
 
 Value MaxOperation::execute()
 {
-	double max = 0;
+	double max = INT_MIN;
 	bool hasNum = false;
 
 	const MyVector<Value> values = range.getValues();
