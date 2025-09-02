@@ -13,6 +13,7 @@
 #include "MinOperationParams.h"
 #include "MaxOperationParams.h"
 #include "CountOperationParams.h"
+#include "ConcatOperationParams.h"
 
 #include "ValueParameter.h"
 #include "CellParameter.h"
@@ -99,6 +100,18 @@ int main()
 	//substrParams.startIndex = 0;
 
 	//table.insertAt(5, 5, FactoryCell::createCell(substrParams.create()));
+
+	//LenOperationParams lenParams;
+	//lenParams.param = new CellParameter(&table.at(1, 4));
+	//table.insertAt(2, 1, FactoryCell::createCell(lenParams.create()));
+
+	/*RangeParameter range(&table.at(1, 1), &table.at(5, 1), &table);
+	CountOperationParams countParams(range);
+	table.insertAt(2, 2, FactoryCell::createCell(countParams.create()));*/
+
+	//ConcatOperationParams concatParams(RangeParameter(&table.at(1, 1), &table.at(4, 1), &table),',');
+
+	//table.insertAt(5, 1, FactoryCell::createCell(concatParams.create()));
 
 	TableView view(table);
 	view.render();

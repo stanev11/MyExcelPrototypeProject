@@ -2,7 +2,11 @@
 
 #include "ConcatOperation.h"
 
-Operation* ConcatOparationParams::create() const
+ConcatOperationParams::ConcatOperationParams(const RangeParameter& range, char delim) : range(range),delimiter(delim)
+{
+}
+
+Operation* ConcatOperationParams::create() const
 {
     return new ConcatOperation(range, delimiter);
 }

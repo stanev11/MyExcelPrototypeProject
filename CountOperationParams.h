@@ -4,6 +4,8 @@
 
 struct CountOperationParams : public OperationParams
 {
+	CountOperationParams() = default;
+
 	CountOperationParams(const RangeParameter& range);
 
 	RangeParameter range;

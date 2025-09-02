@@ -20,9 +20,12 @@
 #include "SumOperationParams.h"
 #include "AverageOperationParams.h"
 #include "SubstrOperationParams.h"
+#include "LenOperationParams.h"
+#include "ConcatOperationParams.h"
 
 #include "MinOperationParams.h"
 #include "MaxOperationParams.h"
+#include "CountOperationParams.h"
 
 
 void ProgramController::saveConfigFile(const MyString& configFile) const
@@ -375,7 +378,7 @@ void ProgramController::fillTable(const MyString& contentFile)
 
 				//ELSE ERROR IN READING DATA - #VALUE = TODO
 			}
-			else if (formulaType == FormulaType::SUBSTR)
+			else if (formulaType == FormulaType::SUBSTR || formulaType==FormulaType::LEN)
 			{
 				ParameterType paramType;
 				ifs.read((char*)&paramType, sizeof(int));
@@ -395,21 +398,56 @@ void ProgramController::fillTable(const MyString& contentFile)
 					 param = new RangeParameter(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable));
 				}
 
-				SubstrOperationParams substrParams;
+				if (formulaType == FormulaType::SUBSTR)
+				{
+					SubstrOperationParams substrParams;
+					substrParams.parameter = param;
 
-				substrParams.parameter = param;
-				
-				int startIndex;
-				ifs.read((char*)&startIndex, sizeof(int));
-				substrParams.startIndex = startIndex;
+					int startIndex;
+					ifs.read((char*)&startIndex, sizeof(int));
+					substrParams.startIndex = startIndex;
 
-				int len;
-				ifs.read((char*)&len, sizeof(int));
-				substrParams.length = len;
+					int len;
+					ifs.read((char*)&len, sizeof(int));
+					substrParams.length = len;
 
-				op = FactoryOperation::createOperation(substrParams);
+					op = FactoryOperation::createOperation(substrParams);
+				}
+				else if (formulaType == FormulaType::LEN)
+				{
+					LenOperationParams lenParams;
+					lenParams.param = param;
+
+					op = FactoryOperation::createOperation(lenParams);
+				}
 			}
+			else if (formulaType == FormulaType::COUNT)
+			{
+				ParameterType paramType;
+				ifs.read((char*)&paramType, sizeof(int));
 
+				if (paramType == ParameterType::RangeParameter)
+				{
+					CountOperationParams countParams(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable));
+
+					op = FactoryOperation::createOperation(countParams);
+				}
+			}
+			else if (formulaType == FormulaType::CONCAT)
+			{
+				ParameterType paramType;
+				ifs.read((char*)&paramType, sizeof(int));
+
+				if (paramType == ParameterType::RangeParameter)
+				{
+					char delim;
+					ifs.read((char*)&delim, sizeof(char));
+
+					ConcatOperationParams concatParams(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable), delim);
+
+					op = FactoryOperation::createOperation(concatParams);
+				}
+			}
 			cell = FactoryCell::createCell(CellContext(op));
 
 			cell->setRow(row);
