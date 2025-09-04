@@ -109,9 +109,11 @@ int main()
 	CountOperationParams countParams(range);
 	table.insertAt(2, 2, FactoryCell::createCell(countParams.create()));*/
 
-	//ConcatOperationParams concatParams(RangeParameter(&table.at(1, 1), &table.at(4, 1), &table),',');
+	table.insertAt(4, 5, new SingleValueCell(MyString("H")));
 
-	//table.insertAt(5, 1, FactoryCell::createCell(concatParams.create()));
+	ConcatOperationParams concatParams(RangeParameter(&table.at(4, 5), &table.at(5, 5), &table),',');
+
+	table.insertAt(5, 1, FactoryCell::createCell(concatParams.create()));
 
 	TableView view(table);
 	view.render();
@@ -121,3 +123,4 @@ int main()
 	controller.saveTable("contentFile.txt", "configFile.txt");
 }
 
+	

@@ -161,6 +161,8 @@ MyString& MyString::operator+=(const MyString& other)
     strncat(data, other.data, other.currentSize);
     currentSize += other.currentSize;
 
+    data[currentSize] = '\0';
+
     return *this;
 }
 

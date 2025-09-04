@@ -440,11 +440,13 @@ void ProgramController::fillTable(const MyString& contentFile)
 
 				if (paramType == ParameterType::RangeParameter)
 				{
+					RangeParameter* range = new RangeParameter(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable));
+
 					char delim;
 					ifs.read((char*)&delim, sizeof(char));
 
-					ConcatOperationParams concatParams(ContentFileReaderHelper::readRangeParameter(ifs, &currentTable), delim);
-
+					ConcatOperationParams concatParams(*range, delim);
+					
 					op = FactoryOperation::createOperation(concatParams);
 				}
 			}

@@ -13,12 +13,11 @@ Operation* ConcatOperation::clone() const
 
 Value ConcatOperation::execute()
 {
-    MyString res;
+	MyString res;
 	bool hasText = false;
 
-	char* delim = new char(delimiter);
-
-	MyString del(delim);
+	char* delim = new char[2] {delimiter};
+	delim[1] = '\0';
 
 	const MyVector<Value>& values = range.getValues();
 
@@ -32,12 +31,12 @@ Value ConcatOperation::execute()
 
 			if (i < values.getSize() - 1)
 			{
-				res += del;
+				res += delim;
 			}
 		}
 	}
 
-	delete delim;
+	delete[] delim;
 
 	if (!hasText)
 	{

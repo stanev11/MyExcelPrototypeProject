@@ -1,2 +1,62 @@
-﻿  MyExcelPrototypeProject.cpp
+﻿  ContentFileReaderHelper.cpp
+  MyExcelPrototypeProject.cpp
+  ProgramController.cpp
+  RangeParameter.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ProgramController.cpp(85,49): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\ProgramController.cpp(85,46): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\RangeParameter.cpp(29,47): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\RangeParameter.cpp(29,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Table.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(8,18): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(13,18): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(22,35): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(22,32): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(26,32): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(27,32): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(76,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(86,19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(249,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Table.cpp')
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(249,13):
+      the template instantiation context (the oldest one first) is
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Cell.h(13,31):
+          see reference to class template instantiation 'HeterogeneousContainer<Cell>' being compiled
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(238,1):
+          while compiling class template member function 'void HeterogeneousContainer<Cell>::insert(const T &,int)'
+          with
+          [
+              T=Cell
+          ]
+              C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(76,21):
+              see the first reference to 'HeterogeneousContainer<Cell>::insert' in 'Table::addCol'
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(58,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Table.cpp')
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(58,13):
+      the template instantiation context (the oldest one first) is
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(53,1):
+          while compiling class template member function 'void HeterogeneousContainer<Cell>::remove(size_t)'
+              C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(88,21):
+              see the first reference to 'HeterogeneousContainer<Cell>::remove' in 'Table::removeCell'
+  
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(114,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Table.cpp')
+      C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(114,13):
+      the template instantiation context (the oldest one first) is
+          C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\HeterogeneousContainer.hpp(103,1):
+          while compiling class template member function 'void HeterogeneousContainer<Cell>::resizeAt(size_t,size_t)'
+              C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\Table.cpp(66,19):
+              see the first reference to 'HeterogeneousContainer<Cell>::resizeAt' in 'Table::addRow'
+  
+  TableBuilder.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\TableBuilder.cpp(14,46): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\TableBuilder.cpp(23,46): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\TableBuilder.cpp(30,42): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\TableBuilder.cpp(37,42): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\TableBuilder.cpp(51,48): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  TableView.cpp
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\TableView.cpp(23,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\TableView.cpp(71,35): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\MyExcelPrototypeProject\TableView.cpp(71,32): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
   MyExcelPrototypeProject.vcxproj -> C:\Users\User\Documents\GitHub\MyExcelPrototypeProject\x64\Debug\MyExcelPrototypeProject.exe
